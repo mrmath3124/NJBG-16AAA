@@ -1,0 +1,234 @@
+{
+ "updated": "2026-10-13",
+ "season": 2026,
+ "team_id": 32514,
+ "source": "https://myhockeyrankings.com/team_info.php?y=2026&t=32514",
+ "team": {
+  "name": "New Jersey Bandits 16U",
+  "rating": 88.1,
+  "record": "7-7-0",
+  "rank_tier1": 45,
+  "rank_all": 65,
+  "tier1_label": "USA Girls 16U Tier 1",
+  "all_label": "USA Girls 16U All",
+  "max_gd": 7
+ },
+ "rated": [
+  {
+   "date": "2026-08-28",
+   "opponent": "Boston Advantage (Blue) 16U",
+   "result": "W",
+   "gf": 2,
+   "ga": 1,
+   "note": "SO",
+   "opp_rating": 88.2,
+   "points": 89.2,
+   "pm": 1.1
+  },
+  {
+   "date": "2026-08-28",
+   "opponent": "Carolina Junior Canes (Tier1) 16U",
+   "result": "W",
+   "gf": 4,
+   "ga": 0,
+   "note": "",
+   "opp_rating": 86.81,
+   "points": 90.81,
+   "pm": 2.71
+  },
+  {
+   "date": "2026-08-29",
+   "opponent": "North American Jr Winterhawks (Red) 16U",
+   "result": "W",
+   "gf": 2,
+   "ga": 1,
+   "note": "",
+   "opp_rating": 87.28,
+   "points": 88.28,
+   "pm": 0.18
+  },
+  {
+   "date": "2026-08-29",
+   "opponent": "Boston Hockey Group 16U",
+   "result": "L",
+   "gf": 2,
+   "ga": 5,
+   "note": "",
+   "opp_rating": 88.91,
+   "points": 85.91,
+   "pm": -2.19
+  },
+  {
+   "date": "2026-08-30",
+   "opponent": "Connecticut Polar Bears (Prep) 16U",
+   "result": "L",
+   "gf": 2,
+   "ga": 3,
+   "note": "",
+   "opp_rating": 90.48,
+   "points": 89.48,
+   "pm": 1.38
+  },
+  {
+   "date": "2026-09-04",
+   "opponent": "Team Wisconsin 16U",
+   "result": "L",
+   "gf": 0,
+   "ga": 2,
+   "note": "",
+   "opp_rating": 91.26,
+   "points": 89.26,
+   "pm": 1.16
+  },
+  {
+   "date": "2026-09-04",
+   "opponent": "North American Hockey Academy (Red) 16U",
+   "result": "L",
+   "gf": 0,
+   "ga": 6,
+   "note": "",
+   "opp_rating": 91.37,
+   "points": 85.37,
+   "pm": -2.73
+  },
+  {
+   "date": "2026-09-05",
+   "opponent": "Bay State Breakers (Green) 16U",
+   "result": "W",
+   "gf": 5,
+   "ga": 3,
+   "note": "",
+   "opp_rating": 88.28,
+   "points": 90.28,
+   "pm": 2.18
+  },
+  {
+   "date": "2026-09-05",
+   "opponent": "Anaheim Lady Ducks (Tier1) 16U",
+   "result": "W",
+   "gf": 2,
+   "ga": 1,
+   "note": "",
+   "opp_rating": 87.74,
+   "points": 88.74,
+   "pm": 0.64
+  },
+  {
+   "date": "2026-09-06",
+   "opponent": "New Hampshire Mountain Cats 16U",
+   "result": "L",
+   "gf": 1,
+   "ga": 2,
+   "note": "",
+   "opp_rating": 87.26,
+   "points": 86.26,
+   "pm": -1.84
+  },
+  {
+   "date": "2026-09-20",
+   "opponent": "Connecticut Ice Cats (Tier2) 16U",
+   "result": "W",
+   "gf": 3,
+   "ga": 1,
+   "note": "",
+   "opp_rating": 85.34,
+   "points": 87.34,
+   "pm": -0.76
+  },
+  {
+   "date": "2026-09-26",
+   "opponent": "Princeton Tiger Lilies (Tier1) 16U",
+   "result": "L",
+   "gf": 3,
+   "ga": 4,
+   "note": "",
+   "opp_rating": 87.0,
+   "points": 86.0,
+   "pm": -2.1
+  },
+  {
+   "date": "2026-09-26",
+   "opponent": "Princeton Tiger Lilies (Tier1) 16U",
+   "result": "W",
+   "gf": 4,
+   "ga": 3,
+   "note": "",
+   "opp_rating": 87.0,
+   "points": 88.0,
+   "pm": -0.1
+  },
+  {
+   "date": "2026-09-27",
+   "opponent": "Connecticut Polar Bears (Prep) 16U",
+   "result": "L",
+   "gf": 0,
+   "ga": 2,
+   "note": "",
+   "opp_rating": 90.48,
+   "points": 88.48,
+   "pm": 0.38
+  }
+ ],
+ "pending": [
+  {
+   "date": "2026-10-04",
+   "opponent": "Stateline Hawks 16U",
+   "result": "W",
+   "gf": 1,
+   "ga": 0,
+   "note": "",
+   "opp_rating": 86.16,
+   "cross_age": false
+  },
+  {
+   "date": "2026-10-10",
+   "opponent": "Florida Alliance 16U",
+   "result": "W",
+   "gf": 5,
+   "ga": 2,
+   "note": "",
+   "opp_rating": 87.25,
+   "cross_age": false
+  },
+  {
+   "date": "2026-10-10",
+   "opponent": "Ontario Hockey Academy Maroon (#7094) U18 AA",
+   "result": "W",
+   "gf": 2,
+   "ga": 0,
+   "note": "",
+   "opp_rating": 86.6,
+   "cross_age": true
+  },
+  {
+   "date": "2026-10-11",
+   "opponent": "Boston Advantage (White) 16U",
+   "result": "W",
+   "gf": 3,
+   "ga": 1,
+   "note": "",
+   "opp_rating": 84.48,
+   "cross_age": false
+  },
+  {
+   "date": "2026-10-11",
+   "opponent": "New Hampshire Mountain Cats 16U",
+   "result": "W",
+   "gf": 2,
+   "ga": 1,
+   "note": "OT/SO",
+   "opp_rating": 87.26,
+   "cross_age": false
+  },
+  {
+   "date": "2026-10-12",
+   "opponent": "Team Long Island 16U",
+   "result": "W",
+   "gf": 4,
+   "ga": 3,
+   "note": "",
+   "opp_rating": 87.83,
+   "cross_age": false
+  }
+ ]
+}

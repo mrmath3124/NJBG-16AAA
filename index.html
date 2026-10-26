@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#080808">
+<title>Bandits 16U</title>
+<meta name="description" content="Ratings, games and stats for the NJ Bandits Girls 16U AAA team. Parent-run.">
+<meta property="og:title" content="Bandits 16U">
+<meta property="og:description" content="Rating, games and stats, updated every Wednesday.">
+<meta property="og:image" content="assets/img/icon-512.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Titillium+Web:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="app">
+  <header class="bar">
+    <img src="assets/img/bandits-logo.png" alt="NJ Bandits Hockey logo" width="52" height="52">
+    <div class="bar-text">
+      <p class="eyebrow">NJ Bandits Girls Hockey</p>
+      <h1 id="team-label">16U AAA</h1>
+    </div>
+    <div class="updated" id="updated"></div>
+  </header>
+
+  <main id="main">
+    <!-- HOME: scoreboard (A) + next game (C) -->
+    <section class="view" id="view-home" aria-labelledby="t-home">
+      <h2 id="t-home" class="skip">Home</h2>
+      <div id="home-next"></div>
+      <section class="score" aria-label="Last result" id="home-last"></section>
+      <div class="tiles" id="home-tiles"></div>
+      <div id="home-what"></div>
+      <section class="view" style="gap:10px">
+        <div class="sechead"><h2>Recent games</h2><div class="rule"></div></div>
+        <div class="list" id="home-recent"></div>
+        <a href="#games">All games</a>
+      </section>
+      <section class="view" style="gap:10px">
+        <div class="sechead"><h2>Team stats</h2><div class="rule"></div></div>
+        <div class="soon">
+          <a href="#stats"><b>Players</b><span id="soon-players">Goals, assists, points</span></a>
+          <a href="#stats"><b>Goalies</b><span id="soon-goalies">Save %, GAA</span></a>
+          <a href="#video"><b>Video</b><span id="soon-video">Hudl links</span></a>
+        </div>
+      </section>
+    </section>
+
+    <!-- RATING: the rating math dashboard -->
+    <section class="view" id="view-rating" aria-labelledby="t-rating" hidden>
+      <div class="sechead"><h2 id="t-rating">Rating</h2><div class="rule"></div></div>
+      <div class="tiles" id="rating-tiles"></div>
+      <div class="card" id="whatif">
+        <h3>Next game: what the score does</h3>
+        <p class="note">Enter the opponent's rating from their MYHockey page, then set the score. Plus-minus is the game's points minus the team rating once the game counts.</p>
+        <div class="controls">
+          <div class="field">
+            <label for="w-opp">Opponent rating</label>
+            <input id="w-opp" type="number" inputmode="decimal" step="0.01" min="60" max="99.99">
+            <input id="w-opp-r" type="range" min="80" max="95" step="0.1" aria-label="Opponent rating slider">
+          </div>
+          <div class="field">
+            <div class="field-top"><label for="w-gf">Bandits goals</label><output id="w-gf-o" for="w-gf"></output></div>
+            <input id="w-gf" type="range" min="0" max="12" step="1" value="3">
+          </div>
+          <div class="field">
+            <div class="field-top"><label for="w-ga">Opponent goals</label><output id="w-ga-o" for="w-ga"></output></div>
+            <input id="w-ga" type="range" min="0" max="12" step="1" value="2">
+          </div>
+          <fieldset class="field">
+            <legend>Start from</legend>
+            <label class="check"><input type="checkbox" id="w-pending" checked> Count games not yet rated</label>
+            <label class="check" id="w-cross-wrap"><input type="checkbox" id="w-cross" checked> Count games against other age groups</label>
+          </fieldset>
+        </div>
+        <div class="score-grid" aria-live="polite">
+          <div><span class="label" id="w-res">Result</span><span class="score-big" id="w-pm">—</span><span class="sub">Plus-minus for the game</span></div>
+          <div><span class="label">Rating after</span><span class="score-big" id="w-r1">—</span><span class="sub" id="w-r1-sub"></span></div>
+          <div><span class="label">Last 10 after</span><span class="score-big" id="w-l10">—</span><span class="sub" id="w-l10-sub"></span></div>
+        </div>
+        <dl class="facts">
+          <div><dt>Game points</dt><dd id="w-pts">—</dd></div>
+          <div><dt>To hold the rating</dt><dd id="w-be">—</dd></div>
+          <div><dt>Each extra goal</dt><dd id="w-goal">—</dd></div>
+        </dl>
+        <div class="scroll"><table class="t" id="w-ladder"><thead><tr><th class="l">Margin</th><th>Points</th><th>+/-</th><th>Rating</th><th>Last 10</th></tr></thead><tbody></tbody></table></div>
+      </div>
+      <div class="card">
+        <h3>How the rating works</h3>
+        <ol class="steps">
+          <li>Each game's goal margin counts up to <span id="cap">7</span> goals either way. Overtime and shootout wins count as one-goal wins.</li>
+          <li>Game points are the opponent's rating plus that margin.</li>
+          <li>The rating is the average of the game points: schedule strength plus average goal margin.</li>
+          <li>Plus-minus is a game's points minus the rating. A win can be negative against a low-rated team, and a loss can be positive against a high-rated one.</li>
+          <li>MYHockey recalculates every team together on Wednesday mornings, October to April, so the rating can move in a week the team does not play.</li>
+        </ol>
+        <p class="note">The last 10 rating averages the game points of the ten most recent rated games.</p>
+      </div>
+      <div class="view" style="gap:10px">
+        <div class="sechead"><h2>Rating math</h2><div class="rule"></div></div>
+        <div class="scroll"><table class="t" id="math"><thead><tr><th class="l">Date</th><th class="l">Opponent</th><th>Score</th><th>Opp</th><th>Pts</th><th>+/-</th></tr></thead><tbody></tbody></table></div>
+        <p class="note" id="math-note"></p>
+      </div>
+    </section>
+
+    <!-- GAMES -->
+    <section class="view" id="view-games" aria-labelledby="t-games" hidden>
+      <div class="sechead"><h2 id="t-games">Upcoming</h2><div class="rule"></div></div>
+      <div class="list" id="games-upcoming"></div>
+      <div class="sechead"><h2>Results</h2><div class="rule"></div></div>
+      <div class="list" id="games-results"></div>
+      <p class="note">Results from MYHockey Rankings. Games marked "not yet rated" count at the next Wednesday update.</p>
+    </section>
+
+    <!-- STATS (E) -->
+    <section class="view" id="view-stats" aria-labelledby="t-stats" hidden>
+      <div class="sechead"><h2 id="t-stats">Skaters</h2><div class="rule"></div></div>
+      <div class="scroll"><table class="t" id="skaters"><thead><tr>
+        <th class="l"><button data-sort="name">Player</button></th>
+        <th><button data-sort="gp">GP</button></th><th><button data-sort="g">G</button></th>
+        <th><button data-sort="a">A</button></th><th aria-sort="descending"><button data-sort="pts">PTS</button></th>
+        <th><button data-sort="pim">PIM</button></th><th>Video</th></tr></thead><tbody></tbody></table></div>
+      <p class="note" id="skaters-note"></p>
+      <div class="sechead"><h2>Goalies</h2><div class="rule"></div></div>
+      <div class="scroll"><table class="t" id="goalies"><thead><tr>
+        <th class="l">Goalie</th><th>GP</th><th>SA</th><th>GA</th><th aria-sort="descending">SV%</th><th>GAA</th></tr></thead><tbody></tbody></table></div>
+      <p class="note" id="goalies-note"></p>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="view" id="view-video" aria-labelledby="t-video" hidden>
+      <div class="sechead"><h2 id="t-video">Game video</h2><div class="rule"></div></div>
+      <div class="list" id="videos"></div>
+      <p class="note">Links open in Hudl. Some videos need a Hudl team login.</p>
+    </section>
+
+    <!-- INFO -->
+    <section class="view" id="view-info" aria-labelledby="t-info" hidden>
+      <div class="sechead"><h2 id="t-info">Info</h2><div class="rule"></div></div>
+      <div class="card" id="info-body"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span id="disclaimer">A parent-run page. Not an official NJ Bandits site.</span>
+    <span>Ratings: <a href="https://myhockeyrankings.com/" rel="noopener">MYHockey Rankings</a>. <a href="#info">Info and sources</a></span>
+  </footer>
+</div>
+
+<nav class="tabs" aria-label="Main">
+  <div class="tabs-in">
+    <a href="#home" data-tab="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9h-6v-6H9v6H3z"/></svg>Home</a>
+    <a href="#rating" data-tab="rating"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Rating</a>
+    <a href="#games" data-tab="games"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Games</a>
+    <a href="#stats" data-tab="stats"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M14.5 14.5c3 0 5.5 2 5.5 5.5"/></svg>Stats</a>
+    <a href="#video" data-tab="video"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M10 9l5 3-5 3z"/></svg>Video</a>
+  </div>
+</nav>
+<script src="assets/js/rating.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

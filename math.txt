@@ -1,0 +1,19 @@
+Rating Math
+Date	Opponent	W/L/T	Score	GD	Opp Rating	Points	+/-
+Aug 28	Boston Advantage (Blue) 16U	W	2 - 1	1	88.20	89.20	1.10
+Aug 28	Carolina Junior Canes (Tier1) 16U	W	4 - 0	4	86.81	90.81	2.71
+Aug 29	North American Jr Winterhawks (Red) 16U	W	2 - 1	1	87.28	88.28	0.18
+Aug 29	Boston Hockey Group 16U	L	2 - 5	-3	88.91	85.91	-2.19
+Aug 30	Connecticut Polar Bears (Prep) 16U	L	2 - 3	-1	90.48	89.48	1.38
+Sep 4	Team Wisconsin 16U	L	0 - 2	-2	91.26	89.26	1.16
+Sep 4	North American Hockey Academy (Red) 16U	L	0 - 6	-6	91.37	85.37	-2.73
+Sep 5	Bay State Breakers (Green) 16U	W	5 - 3	2	88.28	90.28	2.18
+Sep 5	Anaheim Lady Ducks (Tier1) 16U	W	2 - 1	1	87.74	88.74	0.64
+Sep 6	New Hampshire Mountain Cats 16U	L	1 - 2	-1	87.26	86.26	-1.84
+Sep 20	Connecticut Ice Cats (Tier2) 16U	W	3 - 1	2	85.34	87.34	-0.76
+Sep 26	Princeton Tiger Lilies (Tier1) 16U	L	3 - 4	-1	87.00	86.00	-2.10
+Sep 26	Princeton Tiger Lilies (Tier1) 16U	W	4 - 3	1	87.00	88.00	-0.10
+Sep 27	Connecticut Polar Bears (Prep) 16U	L	0 - 2	-2	90.48	88.48	0.38
+Totals (14 games)	7 - 7 - 0	30 - 34	-4	1237.47	1233.47	0.01
+Averages	-0.28	88.39	88.10	0.00
+Note: The maximum goal differential for any one game is 7 The average goal differential (GD) should equal this team's AGD from the rankings page.
