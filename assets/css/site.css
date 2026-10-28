@@ -91,6 +91,23 @@ h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: 18px; 
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border-radius: 2px; border: 2px solid var(--mag); background: var(--mag); color: var(--on-mag); text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; }
 .btn:hover { color: var(--on-mag); filter: brightness(1.1); }
 .btn.outline { background: transparent; border-color: var(--line-strong); color: var(--ink); }
+.btn.gold { background: var(--gold); border-color: var(--gold); color: var(--black); }
+.btn.gold:hover { color: var(--black); }
+
+/* Game notes dialog */
+dialog.notes { width: min(calc(100% - 32px), 40rem); max-height: calc(100% - 32px); padding: 0; background: var(--s1); color: var(--ink); border: 1px solid var(--line); border-top: 6px solid var(--gold); }
+dialog.notes::backdrop { background: rgba(0, 0, 0, 0.72); }
+.notes-in { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.notes-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.notes-head .label, .notes h4 { color: var(--gold); }
+.notes h3 { font-size: 24px; line-height: 28px; }
+.notes h4 { margin: 6px 0 0; font-family: var(--display); font-weight: 700; font-size: 12px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; }
+.notes ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.vs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.vs > div { background: var(--s2); padding: 10px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.vs .big { font-size: 26px; line-height: 30px; }
+.common > div { border-top: 1px solid var(--line); padding: 8px 0; display: flex; flex-direction: column; gap: 2px; font-size: 15px; line-height: 20px; }
+.close-x { flex: none; min-width: 44px; min-height: 44px; background: transparent; border: 1px solid var(--line-strong); color: var(--ink); font-size: 22px; line-height: 1; cursor: pointer; }
 
 /* Lists and tables */
 .list { background: var(--s1); border: 1px solid var(--line); border-radius: 4px; display: flex; flex-direction: column; }
