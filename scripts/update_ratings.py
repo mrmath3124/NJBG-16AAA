@@ -171,8 +171,8 @@ def fetch_live():
         def text_of(url, wait_for=None):
             # MYHockey loads the Games and Rating Math tables with a second request after
             # the page opens, and the first page of a fresh visit often comes back without
-            # them. Wait for the table text, and reload once if it never shows up.
-            for attempt in (1, 2):
+            # them. Wait for the table text, and reload (up to 4 tries) if it never shows up.
+            for attempt in (1, 2, 3, 4):
                 page.goto(url, wait_until="domcontentloaded", timeout=60000)
                 page.wait_for_timeout(1500)
                 if not wait_for:
@@ -184,7 +184,7 @@ def fetch_live():
                     break
                 except Exception:
                     print(f"warning: '{wait_for}' did not appear on {url} (try {attempt})", file=sys.stderr)
-                    time.sleep(3)
+                    time.sleep(5)
             node = page.query_selector("main") or page.query_selector("body")
             return node.inner_text()
 
