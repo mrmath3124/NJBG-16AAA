@@ -1,0 +1,43 @@
+{
+ "updated": "2026-10-28",
+ "source": "MYHockey Rankings team pages",
+ "note": "Scouting data for the next game only, keyed by the opponent name used in schedule.json. games rows: [date, opponent, goals for, goals against, OT/SO note]. Add your own talking points to notes.",
+ "teams": {
+  "Philadelphia Jr Flyers": {
+   "myhr_name": "Philadelphia Jr Flyers (Tier1) 16U",
+   "team_id": 24455,
+   "rating": 93.07,
+   "record": "17-5-2",
+   "gf": 77,
+   "ga": 28,
+   "ranks": ["15th USA Girls 16U Tier 1", "15th USA Girls 16U All"],
+   "notes": [],
+   "games": [
+    ["2026-09-04", "Fox Motors (Tier1) 16U", 2, 3, ""],
+    ["2026-09-04", "Burlington Barracudas U18 AA", 3, 1, ""],
+    ["2026-09-05", "Minnesota Northern Elite (Gold) 16U", 4, 0, ""],
+    ["2026-09-05", "Ottawa Senators U18 AA", 1, 0, ""],
+    ["2026-09-06", "Detroit Little Caesars (Tier1) 16U", 1, 2, "OT"],
+    ["2026-09-11", "Peterborough Ice Kats U18 AA", 6, 3, ""],
+    ["2026-09-11", "Toronto Leaside Wildcats U18 AA", 1, 2, ""],
+    ["2026-09-12", "Stoney Creek Sabres U18 AA", 2, 1, "OT"],
+    ["2026-09-12", "East Ottawa Stars U18 AA", 2, 1, "OT"],
+    ["2026-09-13", "Whitby Wolves U18 AA", 2, 0, ""],
+    ["2026-09-19", "Princeton Tiger Lilies (Tier1) 16U", 11, 0, ""],
+    ["2026-09-19", "Princeton Tiger Lilies (Tier1) 16U", 8, 0, ""],
+    ["2026-10-02", "Mount Academy Girls U18 Prep", 7, 1, ""],
+    ["2026-10-02", "Stanstead College Girls (Prep) U18", 5, 3, ""],
+    ["2026-10-03", "Bourget College Girls (Prep) U18", 2, 0, ""],
+    ["2026-10-04", "Bourget College Girls (Prep) U18", 2, 4, ""],
+    ["2026-10-10", "Washington Pride 16U", 5, 0, ""],
+    ["2026-10-10", "Washington Pride 16U", 3, 1, ""],
+    ["2026-10-16", "Team Wisconsin 16U", 2, 2, ""],
+    ["2026-10-16", "Team Illinois 16U", 0, 0, ""],
+    ["2026-10-17", "Minnesota Elite (White) 16U", 2, 4, ""],
+    ["2026-10-18", "Minnesota Elite (Sky) 16U", 1, 0, ""],
+    ["2026-10-24", "New Jersey Colonials (Tier1) 16U", 2, 0, ""],
+    ["2026-10-25", "New Jersey Colonials (Tier1) 16U", 3, 0, ""]
+   ]
+  }
+ }
+}
