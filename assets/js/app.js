@@ -35,16 +35,18 @@
   var D = {};
   var W = { opp: null, gf: 3, ga: 2, pending: true, cross: true };
 
-  Promise.all(['ratings', 'schedule', 'skaters', 'goalies', 'videos', 'site'].map(function (n) {
+  Promise.all(['ratings', 'schedule', 'skaters', 'goalies', 'videos', 'site', 'opponents'].map(function (n) {
     return getJSON(n).catch(function () { return null; });
   })).then(function (all) {
     D.ratings = all[0]; D.schedule = all[1] || { games: [] }; D.skaters = all[2] || { players: [] };
     D.goalies = all[3] || { goalies: [] }; D.videos = all[4] || { videos: [] }; D.site = all[5] || {};
+    D.opps = (all[6] && all[6].teams) || {}; D.oppsUpdated = all[6] && all[6].updated;
     if (!D.ratings) { $('home-last').textContent = 'Ratings data did not load. Try again in a minute.'; return; }
     D.max = D.ratings.team.max_gd || 7;
     D.all = R.gamesFor(D.ratings, { pending: true, cross: true });
     D.official = R.summarize(D.ratings.rated, D.max);
     D.next = (D.schedule.games || []).filter(function (g) { return g.date >= todayIso(); }).sort(function (a, b) { return a.date < b.date ? -1 : 1; })[0] || null;
+    if (D.next && !D.next.opp_rating && D.opps[D.next.opponent]) D.next.opp_rating = D.opps[D.next.opponent].rating;
     W.opp = D.next && D.next.opp_rating ? D.next.opp_rating : D.ratings.team.rating;
     renderFrame(); renderHome(); renderRating(); renderGames(); renderStats(); renderVideo(); renderInfo();
     wireWhatIf(); drawWhatIf();
@@ -81,10 +83,12 @@
         el('h3', { text: 'vs ' + g.opponent }),
         el('p', { style: 'margin:0', text: longDay(g.date) + (g.time ? ' · ' + g.time : '') + (place ? ' · ' + place : '') + (g.arrive ? ' · arrive ' + g.arrive : '') }),
         el('div', { cls: 'actions' }, [
+          D.opps[g.opponent] ? el('button', { cls: 'btn gold', type: 'button', id: 'notes-open', 'aria-haspopup': 'dialog', text: 'Game notes' }) : null,
           maps ? el('a', { cls: 'btn', href: maps, rel: 'noopener', target: '_blank', text: 'Directions' }) : null,
           el('a', { cls: 'btn outline', href: icsFor(g), download: 'bandits-' + g.date + '.ics', text: 'Add to calendar' })
         ])
       ]));
+      if ($('notes-open')) $('notes-open').addEventListener('click', function () { openNotes(g); });
     } else {
       nx.appendChild(el('section', { cls: 'next', 'aria-label': 'Next game' }, [
         el('span', { cls: 'label', text: 'Next game' }), el('h3', { text: 'Schedule coming soon' }),
@@ -138,6 +142,115 @@
     if (ng) $('soon-goalies').textContent = ng + (ng === 1 ? ' goalie' : ' goalies');
     if (nv) $('soon-video').textContent = nv + ' videos';
   }
+
+  /* ---------- game notes (scouting for the next opponent) ---------- */
+  function norm(s) { return String(s || '').replace(/\s+/g, ' ').trim().toLowerCase(); }
+  function wlt(rows) {
+    var w = 0, l = 0, t = 0, f = 0, a = 0;
+    rows.forEach(function (r) { f += r.gf; a += r.ga; if (r.gf > r.ga) w++; else if (r.gf < r.ga) l++; else t++; });
+    return { w: w, l: l, t: t, gf: f, ga: a, rec: w + '-' + l + '-' + t };
+  }
+  function scores(rows) { return rows.map(function (r) { return resultText(r) + (r.note ? ' ' + r.note : ''); }).join(', '); }
+  function per(n, d) { return d ? (n / d).toFixed(1) : '0'; }
+
+  function scout(g) {
+    var O = D.opps[g.opponent], us = D.ratings.team, me = norm(us.name);
+    var their = O.games.map(function (r) { return { date: r[0], opponent: r[1], gf: r[2], ga: r[3], note: r[4] || '' }; })
+      .filter(function (r) { return norm(r.opponent) !== me; });
+    var ours = D.all.filter(function (r) { return norm(r.opponent) !== norm(O.myhr_name); });
+    var h2h = D.all.filter(function (r) { return norm(r.opponent) === norm(O.myhr_name); });
+    var by = {};
+    ours.forEach(function (r) { var k = norm(r.opponent); (by[k] = by[k] || { name: r.opponent, us: [], them: [] }).us.push(r); });
+    their.forEach(function (r) { var k = norm(r.opponent); if (by[k]) by[k].them.push(r); });
+    var common = Object.keys(by).map(function (k) { return by[k]; }).filter(function (c) { return c.them.length; })
+      .sort(function (a, b) { return a.us[0].date < b.us[0].date ? -1 : 1; });
+    var gp = O.games.length, ourAll = wlt(D.all);
+    return { O: O, us: us, their: their, h2h: h2h, common: common, gp: gp, ourAll: ourAll, gap: O.rating - us.rating };
+  }
+
+  function talkingPoints(S) {
+    var O = S.O, tp = [], gap = S.gap, b = R.summarize(D.all, D.max), be = R.breakEven(b, O.rating, D.max);
+    if (gap >= 1) {
+      tp.push('They are rated ' + f2(gap) + ' higher, so MYHockey expects them to win by about ' + Math.round(gap) + '. ' +
+        (be.kind === 'lose' ? 'Even a loss by ' + be.n + ' or fewer keeps our rating from dropping, so every goal and every save counts until the final buzzer.' : 'Keeping it close is the goal.'));
+    } else if (gap <= -1) {
+      tp.push('We are rated ' + f2(-gap) + ' higher, so MYHockey expects us to win by about ' + Math.round(-gap) + '. ' +
+        (be.kind === 'win' ? 'A win by ' + be.n + ' or more keeps our rating climbing. Keep playing hard with a lead.' : ''));
+    } else {
+      tp.push('The ratings are within a goal of each other (' + f2(O.rating) + ' vs ' + f2(S.us.rating) + '). It is a toss-up, so effort and small plays will decide it.');
+    }
+    var gapg = O.ga / S.gp, gfpg = O.gf / S.gp;
+    if (gapg <= 1.5) tp.push('They allow only ' + gapg.toFixed(1) + ' goals a game. Chances will be scarce: get pucks to the net and go hard for rebounds.');
+    else if (gapg >= 3) tp.push('They allow ' + gapg.toFixed(1) + ' goals a game. Shooting early and often should pay off.');
+    if (gfpg >= 3) tp.push('They score ' + gfpg.toFixed(1) + ' goals a game. Backchecking and staying out of the penalty box will matter.');
+    else if (gfpg <= 1.5) tp.push('They score only ' + gfpg.toFixed(1) + ' goals a game, so an early goal or two is a big cushion.');
+    var close = S.their.filter(function (r) { return Math.abs(r.gf - r.ga) <= 1 || r.note; }).length;
+    if (S.their.length && close / S.their.length >= 0.3) tp.push(close + ' of their ' + S.their.length + ' games were decided by one goal or went to OT or a shootout. Expect it to be tight late; finish every shift.');
+    var last5 = wlt(O.games.slice(-5).map(function (r) { return { gf: r[2], ga: r[3] }; }));
+    tp.push('They are ' + last5.rec + ' in their last 5 games.');
+    var best = S.common.map(function (c) {
+      var u = wlt(c.us), t = wlt(c.them);
+      return { c: c, diff: (t.gf - t.ga) / c.them.length - (u.gf - u.ga) / c.us.length };
+    }).sort(function (a, b) { return Math.abs(b.diff) - Math.abs(a.diff); })[0];
+    if (best) tp.push('Both teams played ' + best.c.name + ': they went ' + scores(best.c.them) + '; we went ' + scores(best.c.us) + '.');
+    if (S.h2h.length) tp.push('We have already played them this season: ' + scores(S.h2h) + '.');
+    return tp;
+  }
+
+  function questions(gap) {
+    if (gap >= 1) return ['What is one battle you can win every shift, even against a strong team?', 'How do we keep going if we fall behind early?'];
+    if (gap <= -1) return ['How do we stay sharp if we get an early lead?', 'What is one thing you want to do better than last game?'];
+    return ['What will you do differently in the last five minutes of a tie game?', 'What is one small play that could swing this game?'];
+  }
+
+  function openNotes(g) {
+    var S = scout(g), O = S.O, us = S.us, dlg = $('notes');
+    if (!dlg) { dlg = el('dialog', { id: 'notes', cls: 'notes', 'aria-labelledby': 'notes-title' }); document.body.appendChild(dlg); }
+    dlg.textContent = '';
+    var ourGp = D.all.length;
+    function side(title, rating, rank, rec, gf, ga, n) {
+      return el('div', null, [el('span', { cls: 'label', text: title }), el('span', { cls: 'big', text: f2(rating) }),
+        el('span', { cls: 'sub', text: (rank ? rank + ' · ' : '') + rec }),
+        el('span', { cls: 'sub', text: per(gf, n) + ' goals for, ' + per(ga, n) + ' against per game' })]);
+    }
+    var common = S.common.length ? el('div', { cls: 'common' }, S.common.map(function (c) {
+      return el('div', null, [el('b', { text: c.name }),
+        el('span', null, ['Us: ', el('span', { cls: 'num', text: scores(c.us) })]),
+        el('span', null, ['Them: ', el('span', { cls: 'num', text: scores(c.them) })])]);
+    })) : el('p', { cls: 'note', text: 'No shared opponents yet.' });
+    var cu = wlt([].concat.apply([], S.common.map(function (c) { return c.us; }))),
+      ct = wlt([].concat.apply([], S.common.map(function (c) { return c.them; })));
+    var kids = [
+      el('div', { cls: 'notes-head' }, [
+        el('div', null, [el('span', { cls: 'label', text: 'Game notes' }), el('h3', { id: 'notes-title', text: 'vs ' + g.opponent }),
+          el('p', { cls: 'note', text: longDay(g.date) + (g.time ? ' · ' + g.time : '') })]),
+        el('button', { cls: 'close-x', type: 'button', 'aria-label': 'Close game notes', text: '×' })
+      ]),
+      el('h4', { text: 'The matchup' }),
+      el('div', { cls: 'vs' }, [
+        side('Bandits', us.rating, us.rank_tier1 ? ord(us.rank_tier1) + ' Tier 1' : '', S.ourAll.rec, S.ourAll.gf, S.ourAll.ga, ourGp),
+        side(g.opponent, O.rating, (O.ranks[0] || '').replace('USA Girls 16U ', ''), O.record, O.gf, O.ga, S.gp)
+      ]),
+      el('h4', { text: 'Head to head' }),
+      el('p', { style: 'margin:0', text: S.h2h.length ? scores(S.h2h) : 'First meeting this season.' }),
+      el('h4', { text: 'Teams we have both played' }),
+      S.common.length ? el('p', { cls: 'note', text: 'Against these teams we are ' + cu.rec + ' (' + cu.gf + '-' + cu.ga + ' in goals); they are ' + ct.rec + ' (' + ct.gf + '-' + ct.ga + ').' }) : null,
+      common,
+      el('h4', { text: 'Talking points' }),
+      el('ul', null, talkingPoints(S).map(function (t) { return el('li', { text: t }); })),
+      O.notes && O.notes.length ? el('h4', { text: 'Notes' }) : null,
+      O.notes && O.notes.length ? el('ul', null, O.notes.map(function (t) { return el('li', { text: t }); })) : null,
+      el('h4', { text: 'Ask your player' }),
+      el('ul', null, questions(S.gap).map(function (t) { return el('li', { text: t }); })),
+      el('p', { cls: 'note' }, ['Numbers from ', el('a', { href: 'https://myhockeyrankings.com/team-info/' + O.team_id + '/' + D.ratings.season + '/games', rel: 'noopener', target: '_blank', text: 'MYHockey Rankings' }),
+        D.oppsUpdated ? ', as of ' + day(D.oppsUpdated) + '.' : '.', ' These are conversation ideas from the stats, not coaching instructions.'])
+    ];
+    dlg.appendChild(el('div', { cls: 'notes-in' }, kids));
+    dlg.querySelector('.close-x').addEventListener('click', function () { closeNotes(dlg); });
+    dlg.onclick = function (e) { if (e.target === dlg) closeNotes(dlg); };
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+  }
+  function closeNotes(dlg) { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); var b = $('notes-open'); if (b) b.focus(); }
 
   function icsFor(g) {
     var d = g.date.replace(/-/g, '');
