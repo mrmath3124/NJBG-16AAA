@@ -168,19 +168,28 @@ def fetch_live():
         browser = p.chromium.launch()
         page = browser.new_page(user_agent=USER_AGENT)
 
-        def text_of(url):
+        def text_of(url, wait_for=None):
             page.goto(url, wait_until="domcontentloaded", timeout=60000)
             page.wait_for_timeout(1500)
+            if wait_for:
+                # MYHockey now loads some tabs (e.g. Rating Math) with a second request
+                # after the page opens, so wait until that text actually shows up.
+                try:
+                    page.wait_for_function(
+                        "t => document.body && document.body.innerText.includes(t)", arg=wait_for, timeout=30000
+                    )
+                except Exception:
+                    print(f"warning: '{wait_for}' never appeared on {url}", file=sys.stderr)
             node = page.query_selector("main") or page.query_selector("body")
             return node.inner_text()
 
-        games_text = text_of(f"{BASE}/team_info.php?y={season}&t={team}")
+        games_text = text_of(f"{BASE}/team_info.php?y={season}&t={team}", wait_for="Game Scores")
         links = page.eval_on_selector_all(
             "a[href*='team-info'], a[href*='team_info']",
             "els => els.map(e => [e.textContent.trim(), e.getAttribute('href')])",
         )
         time.sleep(2)
-        math_text = text_of(f"{BASE}/team-info/{team}/{season}/math")
+        math_text = text_of(f"{BASE}/team-info/{team}/{season}/math", wait_for="Totals (")
         header = parse_header(games_text)
         rated, total = parse_math(math_text, season)
         games = parse_games(games_text, season)
