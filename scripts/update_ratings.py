@@ -183,13 +183,15 @@ def fetch_live():
             node = page.query_selector("main") or page.query_selector("body")
             return node.inner_text()
 
-        games_text = text_of(f"{BASE}/team_info.php?y={season}&t={team}", wait_for="Game Scores")
+        # Math first: the first page of a visit does not always finish loading its
+        # games list in a headless browser, but later pages do.
+        math_text = text_of(f"{BASE}/team-info/{team}/{season}/math", wait_for="Totals (")
+        time.sleep(2)
+        games_text = text_of(f"{BASE}/team-info/{team}/{season}/games", wait_for="* league game")
         links = page.eval_on_selector_all(
             "a[href*='team-info'], a[href*='team_info']",
             "els => els.map(e => [e.textContent.trim(), e.getAttribute('href')])",
         )
-        time.sleep(2)
-        math_text = text_of(f"{BASE}/team-info/{team}/{season}/math", wait_for="Totals (")
         header = parse_header(games_text)
         rated, total = parse_math(math_text, season)
         games = parse_games(games_text, season)
