@@ -166,12 +166,23 @@ def fetch_live():
     team, season = CONFIG["team_id"], CONFIG["season"]
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page(user_agent=USER_AGENT)
+        state = {"ctx": None, "page": None}
+
+        def fresh_page():
+            # A new browser session (fresh cookies) for each MYHockey tab. Within one
+            # session MYHockey only fills in one of its tables (Games or Rating Math),
+            # so reading both from the same session leaves the second one empty.
+            if state["ctx"]:
+                state["ctx"].close()
+            state["ctx"] = browser.new_context(user_agent=USER_AGENT)
+            state["page"] = state["ctx"].new_page()
+            return state["page"]
 
         def text_of(url, wait_for=None):
             # MYHockey loads the Games and Rating Math tables with a second request after
-            # the page opens, and the first page of a fresh visit often comes back without
-            # them. Wait for the table text, and reload (up to 4 tries) if it never shows up.
+            # the page opens, and the first page of a fresh session often comes back
+            # without them. Wait for the table text, and reload (up to 4 tries) if needed.
+            page = fresh_page() if wait_for or not state["page"] else state["page"]
             for attempt in (1, 2, 3, 4):
                 page.goto(url, wait_until="domcontentloaded", timeout=60000)
                 page.wait_for_timeout(1500)
@@ -188,12 +199,10 @@ def fetch_live():
             node = page.query_selector("main") or page.query_selector("body")
             return node.inner_text()
 
-        # Math first: the first page of a visit does not always finish loading its
-        # games list in a headless browser, but later pages do.
         math_text = text_of(f"{BASE}/team-info/{team}/{season}/math", wait_for="Totals (")
         time.sleep(2)
         games_text = text_of(f"{BASE}/team-info/{team}/{season}/games", wait_for="* league game")
-        links = page.eval_on_selector_all(
+        links = state["page"].eval_on_selector_all(
             "a[href*='team-info'], a[href*='team_info']",
             "els => els.map(e => [e.textContent.trim(), e.getAttribute('href')])",
         )
