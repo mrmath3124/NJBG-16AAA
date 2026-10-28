@@ -1,14 +1,14 @@
 {
- "updated": "2026-10-13",
+ "updated": "2026-10-28",
  "season": 2026,
  "team_id": 32514,
  "source": "https://myhockeyrankings.com/team_info.php?y=2026&t=32514",
  "team": {
   "name": "New Jersey Bandits 16U",
-  "rating": 88.1,
-  "record": "7-7-0",
-  "rank_tier1": 45,
-  "rank_all": 65,
+  "rating": 88.97,
+  "record": "14-9-0",
+  "rank_tier1": 42,
+  "rank_all": 55,
   "tier1_label": "USA Girls 16U Tier 1",
   "all_label": "USA Girls 16U All",
   "max_gd": 7
@@ -20,10 +20,10 @@
    "result": "W",
    "gf": 2,
    "ga": 1,
-   "note": "SO",
-   "opp_rating": 88.2,
-   "points": 89.2,
-   "pm": 1.1
+   "opp_rating": 89.06,
+   "points": 90.06,
+   "pm": 1.09,
+   "note": "SO"
   },
   {
    "date": "2026-08-28",
@@ -31,10 +31,10 @@
    "result": "W",
    "gf": 4,
    "ga": 0,
-   "note": "",
-   "opp_rating": 86.81,
-   "points": 90.81,
-   "pm": 2.71
+   "opp_rating": 86.97,
+   "points": 90.97,
+   "pm": 2,
+   "note": ""
   },
   {
    "date": "2026-08-29",
@@ -42,10 +42,10 @@
    "result": "W",
    "gf": 2,
    "ga": 1,
-   "note": "",
-   "opp_rating": 87.28,
-   "points": 88.28,
-   "pm": 0.18
+   "opp_rating": 87.83,
+   "points": 88.83,
+   "pm": -0.14,
+   "note": ""
   },
   {
    "date": "2026-08-29",
@@ -53,10 +53,10 @@
    "result": "L",
    "gf": 2,
    "ga": 5,
-   "note": "",
-   "opp_rating": 88.91,
-   "points": 85.91,
-   "pm": -2.19
+   "opp_rating": 89.53,
+   "points": 86.53,
+   "pm": -2.44,
+   "note": ""
   },
   {
    "date": "2026-08-30",
@@ -64,10 +64,10 @@
    "result": "L",
    "gf": 2,
    "ga": 3,
-   "note": "",
-   "opp_rating": 90.48,
-   "points": 89.48,
-   "pm": 1.38
+   "opp_rating": 90.97,
+   "points": 89.97,
+   "pm": 1,
+   "note": ""
   },
   {
    "date": "2026-09-04",
@@ -75,10 +75,10 @@
    "result": "L",
    "gf": 0,
    "ga": 2,
-   "note": "",
-   "opp_rating": 91.26,
-   "points": 89.26,
-   "pm": 1.16
+   "opp_rating": 91.98,
+   "points": 89.98,
+   "pm": 1.01,
+   "note": ""
   },
   {
    "date": "2026-09-04",
@@ -86,10 +86,10 @@
    "result": "L",
    "gf": 0,
    "ga": 6,
-   "note": "",
-   "opp_rating": 91.37,
-   "points": 85.37,
-   "pm": -2.73
+   "opp_rating": 92.32,
+   "points": 86.32,
+   "pm": -2.65,
+   "note": ""
   },
   {
    "date": "2026-09-05",
@@ -97,10 +97,10 @@
    "result": "W",
    "gf": 5,
    "ga": 3,
-   "note": "",
-   "opp_rating": 88.28,
-   "points": 90.28,
-   "pm": 2.18
+   "opp_rating": 88.63,
+   "points": 90.63,
+   "pm": 1.66,
+   "note": ""
   },
   {
    "date": "2026-09-05",
@@ -108,10 +108,10 @@
    "result": "W",
    "gf": 2,
    "ga": 1,
-   "note": "",
-   "opp_rating": 87.74,
-   "points": 88.74,
-   "pm": 0.64
+   "opp_rating": 88.92,
+   "points": 89.92,
+   "pm": 0.95,
+   "note": ""
   },
   {
    "date": "2026-09-06",
@@ -119,10 +119,10 @@
    "result": "L",
    "gf": 1,
    "ga": 2,
-   "note": "",
-   "opp_rating": 87.26,
-   "points": 86.26,
-   "pm": -1.84
+   "opp_rating": 87.96,
+   "points": 86.96,
+   "pm": -2.01,
+   "note": ""
   },
   {
    "date": "2026-09-20",
@@ -130,10 +130,10 @@
    "result": "W",
    "gf": 3,
    "ga": 1,
-   "note": "",
-   "opp_rating": 85.34,
-   "points": 87.34,
-   "pm": -0.76
+   "opp_rating": 85.83,
+   "points": 87.83,
+   "pm": -1.14,
+   "note": ""
   },
   {
    "date": "2026-09-26",
@@ -141,10 +141,10 @@
    "result": "L",
    "gf": 3,
    "ga": 4,
-   "note": "",
-   "opp_rating": 87.0,
-   "points": 86.0,
-   "pm": -2.1
+   "opp_rating": 87.62,
+   "points": 86.62,
+   "pm": -2.35,
+   "note": ""
   },
   {
    "date": "2026-09-26",
@@ -152,10 +152,10 @@
    "result": "W",
    "gf": 4,
    "ga": 3,
-   "note": "",
-   "opp_rating": 87.0,
-   "points": 88.0,
-   "pm": -0.1
+   "opp_rating": 87.62,
+   "points": 88.62,
+   "pm": -0.35,
+   "note": ""
   },
   {
    "date": "2026-09-27",
@@ -163,22 +163,21 @@
    "result": "L",
    "gf": 0,
    "ga": 2,
-   "note": "",
-   "opp_rating": 90.48,
-   "points": 88.48,
-   "pm": 0.38
-  }
- ],
- "pending": [
+   "opp_rating": 90.97,
+   "points": 88.97,
+   "pm": 0,
+   "note": ""
+  },
   {
    "date": "2026-10-04",
    "opponent": "Stateline Hawks 16U",
    "result": "W",
    "gf": 1,
    "ga": 0,
-   "note": "",
-   "opp_rating": 86.16,
-   "cross_age": false
+   "opp_rating": 86.71,
+   "points": 87.71,
+   "pm": -1.26,
+   "note": ""
   },
   {
    "date": "2026-10-10",
@@ -186,9 +185,10 @@
    "result": "W",
    "gf": 5,
    "ga": 2,
-   "note": "",
-   "opp_rating": 87.25,
-   "cross_age": false
+   "opp_rating": 88.01,
+   "points": 91.01,
+   "pm": 2.04,
+   "note": ""
   },
   {
    "date": "2026-10-10",
@@ -196,9 +196,10 @@
    "result": "W",
    "gf": 2,
    "ga": 0,
-   "note": "",
-   "opp_rating": 86.6,
-   "cross_age": true
+   "opp_rating": 87.45,
+   "points": 89.45,
+   "pm": 0.48,
+   "note": ""
   },
   {
    "date": "2026-10-11",
@@ -206,9 +207,10 @@
    "result": "W",
    "gf": 3,
    "ga": 1,
-   "note": "",
-   "opp_rating": 84.48,
-   "cross_age": false
+   "opp_rating": 85.48,
+   "points": 87.48,
+   "pm": -1.49,
+   "note": ""
   },
   {
    "date": "2026-10-11",
@@ -216,9 +218,10 @@
    "result": "W",
    "gf": 2,
    "ga": 1,
-   "note": "OT/SO",
-   "opp_rating": 87.26,
-   "cross_age": false
+   "opp_rating": 87.96,
+   "points": 88.96,
+   "pm": -0.01,
+   "note": "OT/SO"
   },
   {
    "date": "2026-10-12",
@@ -226,9 +229,44 @@
    "result": "W",
    "gf": 4,
    "ga": 3,
-   "note": "",
-   "opp_rating": 87.83,
-   "cross_age": false
+   "opp_rating": 88.95,
+   "points": 89.95,
+   "pm": 0.98,
+   "note": ""
+  },
+  {
+   "date": "2026-10-24",
+   "opponent": "Connecticut Ice Cats (Tier2) 16U",
+   "result": "W",
+   "gf": 7,
+   "ga": 0,
+   "opp_rating": 85.83,
+   "points": 92.83,
+   "pm": 3.86,
+   "note": ""
+  },
+  {
+   "date": "2026-10-25",
+   "opponent": "Atlantic Coast Academy 16U",
+   "result": "L",
+   "gf": 3,
+   "ga": 4,
+   "opp_rating": 89.32,
+   "points": 88.32,
+   "pm": -0.65,
+   "note": ""
+  },
+  {
+   "date": "2026-10-25",
+   "opponent": "Atlantic Coast Academy 16U",
+   "result": "L",
+   "gf": 1,
+   "ga": 2,
+   "opp_rating": 89.32,
+   "points": 88.32,
+   "pm": -0.65,
+   "note": ""
   }
- ]
+ ],
+ "pending": []
 }
