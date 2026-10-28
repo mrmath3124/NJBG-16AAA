@@ -1,5 +1,190 @@
 {
- "updated": "",
- "note": "Upcoming games. Add rows with date (YYYY-MM-DD), time, opponent, rink, town, arrive, opp_rating (optional), map_url (optional).",
- "games": []
+ "updated": "2026-10-28",
+ "note": "Upcoming games from the team's SportsEngine schedule. Fields: date (YYYY-MM-DD), time, opponent, rink, town, arrive, opp_rating (optional).",
+ "games": [
+  {
+   "date": "2026-10-31",
+   "time": "11:15 am",
+   "opponent": "Philadelphia Jr Flyers",
+   "rink": "Ice Vault Arena (Rink 2)",
+   "town": "Wayne, NJ",
+   "arrive": ""
+  },
+  {
+   "date": "2026-10-31",
+   "time": "4:15 pm",
+   "opponent": "Philadelphia Jr Flyers",
+   "rink": "Ice Vault Arena (Ice Vault rink)",
+   "town": "Wayne, NJ",
+   "arrive": ""
+  },
+  {
+   "date": "2026-11-06",
+   "time": "11:10 am",
+   "opponent": "BK Selects",
+   "rink": "Tim Hortons Iceplex (Rink 1)",
+   "town": "Rochester, NY",
+   "arrive": ""
+  },
+  {
+   "date": "2026-11-06",
+   "time": "4:10 pm",
+   "opponent": "Rochester Jr. Americans",
+   "rink": "Tim Hortons Iceplex (Rink 2)",
+   "town": "Rochester, NY",
+   "arrive": ""
+  },
+  {
+   "date": "2026-11-07",
+   "time": "8:15 am",
+   "opponent": "CT Junior Rangers",
+   "rink": "Tim Hortons Iceplex (Rink 3)",
+   "town": "Rochester, NY",
+   "arrive": ""
+  },
+  {
+   "date": "2026-11-14",
+   "time": "4:15 pm",
+   "opponent": "Stateline Hawks",
+   "rink": "Rye Country Day School",
+   "town": "Rye, NY",
+   "arrive": ""
+  },
+  {
+   "date": "2026-11-15",
+   "time": "12:00 pm",
+   "opponent": "Skaneateles",
+   "rink": "Skaneateles Community Center",
+   "town": "Skaneateles, NY",
+   "arrive": ""
+  },
+  {
+   "date": "2026-11-15",
+   "time": "4:30 pm",
+   "opponent": "Skaneateles",
+   "rink": "Skaneateles Community Center",
+   "town": "Skaneateles, NY",
+   "arrive": ""
+  },
+  {
+   "date": "2026-11-21",
+   "time": "12:00 pm",
+   "opponent": "Team Long Island",
+   "rink": "Ice Vault Arena (Rink 2)",
+   "town": "Wayne, NJ",
+   "arrive": ""
+  },
+  {
+   "date": "2026-11-22",
+   "time": "10:15 am",
+   "opponent": "Princeton Tiger Lilies",
+   "rink": "Ice Vault Arena (Rink 2)",
+   "town": "Wayne, NJ",
+   "arrive": ""
+  },
+  {
+   "date": "2026-11-22",
+   "time": "2:30 pm",
+   "opponent": "Princeton Tiger Lilies",
+   "rink": "Ice Vault Arena (Rink 2)",
+   "town": "Wayne, NJ",
+   "arrive": ""
+  },
+  {
+   "date": "2026-12-06",
+   "time": "7:30 am",
+   "opponent": "Team Long Island",
+   "rink": "Clark Gillies Arena (Dix Hills Ice Rink)",
+   "town": "Dix Hills, NY",
+   "arrive": ""
+  },
+  {
+   "date": "2026-12-06",
+   "time": "2:40 pm",
+   "opponent": "Team Long Island",
+   "rink": "Clark Gillies Arena (Dix Hills Ice Rink)",
+   "town": "Dix Hills, NY",
+   "arrive": ""
+  },
+  {
+   "date": "2026-12-12",
+   "time": "12:00 pm",
+   "opponent": "Atlantic Coast Academy",
+   "rink": "Boys & Girls Club of the Berkshires (Rink 1)",
+   "town": "Pittsfield, MA",
+   "arrive": ""
+  },
+  {
+   "date": "2026-12-12",
+   "time": "6:00 pm",
+   "opponent": "Atlantic Coast Academy",
+   "rink": "Boys & Girls Club of the Berkshires (Rink 1)",
+   "town": "Pittsfield, MA",
+   "arrive": ""
+  },
+  {
+   "date": "2026-12-13",
+   "time": "4:45 pm",
+   "opponent": "NJ Colonials",
+   "rink": "Mennen Sports Arena",
+   "town": "Morristown, NJ",
+   "arrive": ""
+  },
+  {
+   "date": "2026-12-19",
+   "time": "9:30 am",
+   "opponent": "NJ Colonials",
+   "rink": "Ice Vault Arena",
+   "town": "Wayne, NJ",
+   "arrive": ""
+  },
+  {
+   "date": "2027-01-09",
+   "time": "10:45 am",
+   "opponent": "Philadelphia Jr Flyers",
+   "rink": "Ice Line",
+   "town": "West Chester, PA",
+   "arrive": ""
+  },
+  {
+   "date": "2027-01-09",
+   "time": "3:45 pm",
+   "opponent": "Philadelphia Jr Flyers",
+   "rink": "Ice Line",
+   "town": "West Chester, PA",
+   "arrive": ""
+  },
+  {
+   "date": "2027-01-10",
+   "time": "10:00 am",
+   "opponent": "Princeton Tiger Lilies",
+   "rink": "East Brunswick Ice Arena (Rink 1)",
+   "town": "East Brunswick, NJ",
+   "arrive": ""
+  },
+  {
+   "date": "2027-01-24",
+   "time": "5:30 pm",
+   "opponent": "Princeton Tiger Lilies",
+   "rink": "Ice Vault Arena (Rink 2)",
+   "town": "Wayne, NJ",
+   "arrive": ""
+  },
+  {
+   "date": "2027-02-06",
+   "time": "7:15 pm",
+   "opponent": "NJ Colonials",
+   "rink": "Ice Vault Arena",
+   "town": "Wayne, NJ",
+   "arrive": ""
+  },
+  {
+   "date": "2027-02-07",
+   "time": "1:15 pm",
+   "opponent": "NJ Colonials",
+   "rink": "Mennen Sports Arena",
+   "town": "Morristown, NJ",
+   "arrive": ""
+  }
+ ]
 }
