@@ -169,17 +169,22 @@ def fetch_live():
         page = browser.new_page(user_agent=USER_AGENT)
 
         def text_of(url, wait_for=None):
-            page.goto(url, wait_until="domcontentloaded", timeout=60000)
-            page.wait_for_timeout(1500)
-            if wait_for:
-                # MYHockey now loads some tabs (e.g. Rating Math) with a second request
-                # after the page opens, so wait until that text actually shows up.
+            # MYHockey loads the Games and Rating Math tables with a second request after
+            # the page opens, and the first page of a fresh visit often comes back without
+            # them. Wait for the table text, and reload once if it never shows up.
+            for attempt in (1, 2):
+                page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_timeout(1500)
+                if not wait_for:
+                    break
                 try:
                     page.wait_for_function(
                         "t => document.body && document.body.innerText.includes(t)", arg=wait_for, timeout=30000
                     )
+                    break
                 except Exception:
-                    print(f"warning: '{wait_for}' never appeared on {url}", file=sys.stderr)
+                    print(f"warning: '{wait_for}' did not appear on {url} (try {attempt})", file=sys.stderr)
+                    time.sleep(3)
             node = page.query_selector("main") or page.query_selector("body")
             return node.inner_text()
 
