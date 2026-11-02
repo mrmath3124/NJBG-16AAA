@@ -1,0 +1,92 @@
+name: Update game notes
+
+# Builds Game notes for every opponent in the next two weeks (and always the next
+# game), so the Game notes button appears as soon as a new team is up next.
+# Runs every morning, and right away whenever data/schedule.json changes.
+# Cron times are UTC: 10:23 UTC is 6:23 am Eastern in daylight time, 5:23 am in winter.
+on:
+  schedule:
+    - cron: "23 10 * * *"
+  push:
+    branches: [main]
+    paths:
+      - data/schedule.json
+      - data/opponent_ids.json
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: update-game-notes
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install browser
+        run: |
+          pip install playwright==1.47.0
+          python -m playwright install --with-deps chromium
+
+      - name: Check the parser
+        run: python tests/test_opponents.py
+
+      - name: Fetch opponents from MYHockey
+        id: fetch
+        run: python scripts/update_opponents.py
+
+      - name: Publish if anything changed
+        run: |
+          if git diff --quiet -- data/opponents.json data/opponent_ids.json; then
+            echo "No change."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/opponents.json data/opponent_ids.json
+            git commit -m "Game notes update $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Open an issue if an opponent could not be found
+        if: steps.fetch.outputs.problems != ''
+        uses: actions/github-script@v7
+        env:
+          PROBLEMS: ${{ steps.fetch.outputs.problems }}
+        with:
+          script: |
+            const title = 'Game notes: an upcoming opponent needs a look';
+            const open = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 });
+            if (open.data.some(i => i.title === title)) return;
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body: `The Game notes update could not build notes for every upcoming opponent:\n\n${process.env.PROBLEMS}\n\n` +
+                `To fix a team, open data/opponent_ids.json, add or correct its MYHockey team id (the number in the team's MYHockey address), and commit. ` +
+                `The workflow reruns on its own. Close this issue when the notes look right.\n\nRun log: ${run}`
+            });
+
+      - name: Open an issue if the update failed
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Game notes update failed (${new Date().toISOString().slice(0, 10)})`,
+              body: `The Game notes update did not finish. The site keeps the last notes it had.\n\nRun log: ${run}`
+            });
