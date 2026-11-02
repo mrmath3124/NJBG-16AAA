@@ -1,0 +1,15 @@
+{
+ "note": "MYHockey team id for each opponent name used in schedule.json (the number in the team's MYHockey address, e.g. myhockeyrankings.com/team-info/21973/...). Fix a wrong one here. New names are looked up automatically and added.",
+ "teams": {
+  "Philadelphia Jr Flyers": 24455,
+  "BK Selects": 21973,
+  "Rochester Jr. Americans": 32295,
+  "CT Junior Rangers": 35959,
+  "Stateline Hawks": 30072,
+  "Skaneateles": 26373,
+  "Team Long Island": 34160,
+  "Princeton Tiger Lilies": 9805,
+  "Atlantic Coast Academy": 39712,
+  "NJ Colonials": 10801
+ }
+}
