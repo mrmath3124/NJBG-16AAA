@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "source": "MYHockey Rankings team pages",
  "note": "Scouting data for upcoming opponents, keyed by the opponent name used in schedule.json. Written by scripts/update_opponents.py. games rows: [date, opponent, goals for, goals against, OT/SO note]. Add your own talking points to notes; they are kept.",
  "teams": {
@@ -46,9 +46,9 @@
    "myhr_name": "Rochester Jr Americans (Tier1) 16U",
    "team_id": 32295,
    "rating": 87.15,
-   "record": "3-13-1",
-   "gf": 22,
-   "ga": 96,
+   "record": "4-14-1",
+   "gf": 28,
+   "ga": 106,
    "ranks": [
     "53rd USA Girls 16U Tier 1",
     "96th USA Girls 16U All"
@@ -71,7 +71,9 @@
     ["2026-10-17", "Minnesota Elite (Gold) 16U", 1, 9, ""],
     ["2026-10-18", "Fox Motors (Tier1) 16U", 1, 7, ""],
     ["2026-10-24", "Skaneateles Lakers 16U", 4, 3, ""],
-    ["2026-10-24", "Skaneateles Lakers 16U", 3, 3, ""]
+    ["2026-10-24", "Skaneateles Lakers 16U", 3, 3, ""],
+    ["2026-10-31", "Skaneateles Lakers 16U", 1, 7, ""],
+    ["2026-10-31", "Skaneateles Lakers 16U", 5, 3, ""]
    ]
   },
   "CT Junior Rangers": {
@@ -118,9 +120,9 @@
    "myhr_name": "Stateline Hawks 16U",
    "team_id": 30072,
    "rating": 86.71,
-   "record": "14-6-1",
+   "record": "14-7-1",
    "gf": 60,
-   "ga": 24,
+   "ga": 28,
    "ranks": [
     "44th USA Girls 16U Tier 2",
     "110th USA Girls 16U All"
@@ -147,7 +149,8 @@
     ["2026-10-11", "West Seneca Wings 16U", 2, 0, ""],
     ["2026-10-11", "Jacksonville Lunas (Tier2) 16U", 8, 1, ""],
     ["2026-10-25", "Valley Jr Warriors (Tier2) 16U", 0, 0, ""],
-    ["2026-10-25", "Boston Americans (Tier2) 19U", 1, 4, ""]
+    ["2026-10-25", "Boston Americans (Tier2) 19U", 1, 4, ""],
+    ["2026-11-01", "Connecticut Jr Rangers 16U", 0, 4, ""]
    ]
   },
   "Skaneateles": {
