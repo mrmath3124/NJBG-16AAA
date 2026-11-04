@@ -1,18 +1,18 @@
 {
- "updated": "2026-11-03",
+ "updated": "2026-11-04",
  "source": "MYHockey Rankings team pages",
  "note": "Scouting data for upcoming opponents, keyed by the opponent name used in schedule.json. Written by scripts/update_opponents.py. games rows: [date, opponent, goals for, goals against, OT/SO note]. Add your own talking points to notes; they are kept.",
  "teams": {
   "BK Selects": {
    "myhr_name": "Bishop Kearney Selects 16U",
    "team_id": 21973,
-   "rating": 94.97,
+   "rating": 94.79,
    "record": "19-5-0",
    "gf": 91,
    "ga": 26,
    "ranks": [
-    "5th USA Girls 16U Tier 1",
-    "5th USA Girls 16U All"
+    "6th USA Girls 16U Tier 1",
+    "6th USA Girls 16U All"
    ],
    "notes": [],
    "games": [
@@ -45,13 +45,13 @@
   "Rochester Jr. Americans": {
    "myhr_name": "Rochester Jr Americans (Tier1) 16U",
    "team_id": 32295,
-   "rating": 87.15,
+   "rating": 86.91,
    "record": "4-14-1",
    "gf": 28,
    "ga": 106,
    "ranks": [
-    "53rd USA Girls 16U Tier 1",
-    "96th USA Girls 16U All"
+    "54th USA Girls 16U Tier 1",
+    "98th USA Girls 16U All"
    ],
    "notes": [],
    "games": [
@@ -79,12 +79,12 @@
   "CT Junior Rangers": {
    "myhr_name": "Connecticut Jr Rangers 16U",
    "team_id": 35959,
-   "rating": 88.2,
-   "record": "8-17-1",
-   "gf": 63,
+   "rating": 88.13,
+   "record": "9-17-1",
+   "gf": 67,
    "ga": 92,
    "ranks": [
-    "68th USA Girls 16U All"
+    "65th USA Girls 16U All"
    ],
    "notes": [],
    "games": [
@@ -113,19 +113,20 @@
     ["2026-10-11", "Team Long Island 16U", 1, 2, ""],
     ["2026-10-11", "Boston Advantage (Blue) 16U", 2, 4, ""],
     ["2026-10-12", "New Hampshire Mountain Cats 16U", 3, 1, ""],
-    ["2026-10-25", "Valley Jr Warriors (Tier1) 16U", 2, 8, ""]
+    ["2026-10-25", "Valley Jr Warriors (Tier1) 16U", 2, 8, ""],
+    ["2026-11-01", "Stateline Hawks 16U", 4, 0, ""]
    ]
   },
   "Stateline Hawks": {
    "myhr_name": "Stateline Hawks 16U",
    "team_id": 30072,
-   "rating": 86.71,
+   "rating": 86.42,
    "record": "14-7-1",
    "gf": 60,
    "ga": 28,
    "ranks": [
-    "44th USA Girls 16U Tier 2",
-    "110th USA Girls 16U All"
+    "42nd USA Girls 16U Tier 2",
+    "108th USA Girls 16U All"
    ],
    "notes": [],
    "games": [
@@ -156,13 +157,13 @@
   "Skaneateles": {
    "myhr_name": "Skaneateles Lakers 16U",
    "team_id": 26373,
-   "rating": 88.0,
-   "record": "6-5-3",
-   "gf": 42,
-   "ga": 44,
+   "rating": 87.95,
+   "record": "7-6-3",
+   "gf": 52,
+   "ga": 50,
    "ranks": [
-    "19th USA Girls 16U Tier 2",
-    "73rd USA Girls 16U All"
+    "16th USA Girls 16U Tier 2",
+    "68th USA Girls 16U All"
    ],
    "notes": [],
    "games": [
@@ -179,7 +180,9 @@
     ["2026-10-11", "Team Long Island 16U", 1, 4, ""],
     ["2026-10-12", "Florida Alliance 16U", 5, 0, ""],
     ["2026-10-24", "Rochester Jr Americans (Tier1) 16U", 3, 4, ""],
-    ["2026-10-24", "Rochester Jr Americans (Tier1) 16U", 3, 3, ""]
+    ["2026-10-24", "Rochester Jr Americans (Tier1) 16U", 3, 3, ""],
+    ["2026-10-31", "Rochester Jr Americans (Tier1) 16U", 7, 1, ""],
+    ["2026-10-31", "Rochester Jr Americans (Tier1) 16U", 3, 5, ""]
    ]
   }
  }
