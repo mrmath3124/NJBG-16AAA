@@ -113,7 +113,7 @@
     games.forEach(function (g) { if (g.gf > g.ga) w++; else if (g.gf < g.ga) l++; else t++; });
     $('home-tiles').append(
       tile('Rating', f2(team.rating), 'Last update', true),
-      tile('Tier 1 rank', ord(team.rank_tier1), team.tier1_label),
+      tile('Tier 1 rank', ord(team.rank_tier1), team.rank_all ? ord(team.rank_all) + ' of all USA Girls 16U' : team.tier1_label),
       tile('Record', w + '-' + l + '-' + t, 'All games'),
       tile('Last 10', f2(D.official.l10), 'Rated games')
     );
