@@ -1,49 +1,8 @@
 {
- "updated": "2026-11-07",
+ "updated": "2026-11-08",
  "source": "MYHockey Rankings team pages",
  "note": "Scouting data for upcoming opponents, keyed by the opponent name used in schedule.json. Written by scripts/update_opponents.py. games rows: [date, opponent, goals for, goals against, OT/SO note]. Add your own talking points to notes; they are kept.",
  "teams": {
-  "CT Junior Rangers": {
-   "myhr_name": "Connecticut Jr Rangers 16U",
-   "team_id": 35959,
-   "rating": 88.13,
-   "record": "9-17-1",
-   "gf": 67,
-   "ga": 92,
-   "ranks": [
-    "65th USA Girls 16U All"
-   ],
-   "notes": [],
-   "games": [
-    ["2026-08-28", "Carolina Junior Canes (Tier1) 16U", 0, 1, ""],
-    ["2026-08-28", "Princeton Tiger Lilies (Tier1) 16U", 5, 1, ""],
-    ["2026-08-29", "Seacoast Spartans (Gold) 16U", 2, 1, ""],
-    ["2026-08-29", "Atlantic Coast Academy 16U", 1, 2, ""],
-    ["2026-08-30", "Boston Hockey Group 16U", 3, 5, ""],
-    ["2026-09-04", "Washington Pride 16U", 1, 3, ""],
-    ["2026-09-04", "Team Colorado 16U", 2, 5, ""],
-    ["2026-09-05", "Lovell Academy Lions (Tier1) 16U", 0, 10, ""],
-    ["2026-09-05", "Sno-King Jr Thunderbirds (Tier1) 16U", 6, 1, ""],
-    ["2026-09-06", "Bay State Breakers (Green) 16U", 4, 6, ""],
-    ["2026-09-19", "North American Jr Winterhawks (Navy) 19U", 3, 3, ""],
-    ["2026-09-19", "Skaneateles Lakers 16U", 9, 6, ""],
-    ["2026-09-20", "Valley Jr Warriors (Tier1) 16U", 0, 4, ""],
-    ["2026-09-20", "New Hampshire Mountain Cats 16U", 3, 2, ""],
-    ["2026-09-26", "Atlantic Coast Academy 16U", 0, 2, ""],
-    ["2026-09-26", "Atlantic Coast Academy 16U", 4, 0, ""],
-    ["2026-10-02", "Lovell Academy Lions (Tier2) 16U", 0, 1, ""],
-    ["2026-10-03", "Atlantic Coast Academy 16U", 1, 3, ""],
-    ["2026-10-04", "Princeton Tiger Lilies (Tier1) 16U", 3, 4, "SO"],
-    ["2026-10-04", "Valley Jr Warriors (Tier1) 16U", 1, 8, ""],
-    ["2026-10-10", "Boston Advantage (White) 16U", 3, 2, ""],
-    ["2026-10-10", "Skaneateles Lakers 16U", 4, 7, ""],
-    ["2026-10-11", "Team Long Island 16U", 1, 2, ""],
-    ["2026-10-11", "Boston Advantage (Blue) 16U", 2, 4, ""],
-    ["2026-10-12", "New Hampshire Mountain Cats 16U", 3, 1, ""],
-    ["2026-10-25", "Valley Jr Warriors (Tier1) 16U", 2, 8, ""],
-    ["2026-11-01", "Stateline Hawks 16U", 4, 0, ""]
-   ]
-  },
   "Stateline Hawks": {
    "myhr_name": "Stateline Hawks 16U",
    "team_id": 30072,
@@ -85,9 +44,9 @@
    "myhr_name": "Skaneateles Lakers 16U",
    "team_id": 26373,
    "rating": 87.95,
-   "record": "7-6-3",
-   "gf": 52,
-   "ga": 50,
+   "record": "10-6-3",
+   "gf": 60,
+   "ga": 53,
    "ranks": [
     "16th USA Girls 16U Tier 2",
     "68th USA Girls 16U All"
@@ -101,15 +60,18 @@
     ["2026-09-26", "New Jersey Colonials (Tier1) 16U", 3, 3, ""],
     ["2026-09-27", "New Jersey Colonials (Tier1) 16U", 1, 1, ""],
     ["2026-10-04", "Rochester Edge 19U", 2, 1, ""],
-    ["2026-10-10", "Boston Advantage (Blue) 16U", 0, 4, ""],
     ["2026-10-10", "Connecticut Jr Rangers 16U", 7, 4, ""],
-    ["2026-10-11", "Boston Advantage (White) 16U", 3, 2, ""],
+    ["2026-10-10", "Boston Advantage (Blue) 16U", 0, 4, ""],
     ["2026-10-11", "Team Long Island 16U", 1, 4, ""],
+    ["2026-10-11", "Boston Advantage (White) 16U", 3, 2, ""],
     ["2026-10-12", "Florida Alliance 16U", 5, 0, ""],
     ["2026-10-24", "Rochester Jr Americans (Tier1) 16U", 3, 4, ""],
     ["2026-10-24", "Rochester Jr Americans (Tier1) 16U", 3, 3, ""],
     ["2026-10-31", "Rochester Jr Americans (Tier1) 16U", 7, 1, ""],
-    ["2026-10-31", "Rochester Jr Americans (Tier1) 16U", 3, 5, ""]
+    ["2026-10-31", "Rochester Jr Americans (Tier1) 16U", 3, 5, ""],
+    ["2026-11-06", "Philadelphia Jr Flyers (Black) 16U", 3, 2, "SO"],
+    ["2026-11-06", "Pittsburgh Steel City Selects (Minor) 16U", 3, 0, ""],
+    ["2026-11-07", "Lovell Academy Lions (Tier2) 16U", 2, 1, ""]
    ]
   },
   "Team Long Island": {
@@ -145,6 +107,44 @@
     ["2026-10-11", "Skaneateles Lakers 16U", 4, 1, ""],
     ["2026-10-12", "New Jersey Bandits 16U", 3, 4, ""],
     ["2026-10-18", "New Jersey Bandits 16U", 3, 2, ""]
+   ]
+  },
+  "Princeton Tiger Lilies": {
+   "myhr_name": "Princeton Tiger Lilies (Tier1) 16U",
+   "team_id": 9805,
+   "rating": 87.45,
+   "record": "4-17-2",
+   "gf": 39,
+   "ga": 96,
+   "ranks": [
+    "51st USA Girls 16U Tier 1",
+    "83rd USA Girls 16U All"
+   ],
+   "notes": [],
+   "games": [
+    ["2026-08-28", "Mid Fairfield CT Stars (Major2) 16U", 1, 3, ""],
+    ["2026-08-28", "Connecticut Jr Rangers 16U", 1, 5, ""],
+    ["2026-08-29", "Boston Hockey Group 16U", 0, 2, ""],
+    ["2026-08-29", "Rome Grizzlies 16U", 4, 1, ""],
+    ["2026-08-30", "Biggby Coffee 16U", 1, 6, ""],
+    ["2026-09-04", "New Hampshire Mountain Cats 16U", 1, 3, ""],
+    ["2026-09-04", "Clarington Flames U18 AA", 0, 1, ""],
+    ["2026-09-05", "Arizona Kachinas (Green) 16U", 1, 4, ""],
+    ["2026-09-05", "Boston Americans (Tier1) 16U", 1, 6, ""],
+    ["2026-09-06", "Florida Alliance 16U", 1, 2, ""],
+    ["2026-09-19", "Philadelphia Jr Flyers (Tier1) 16U", 0, 11, ""],
+    ["2026-09-19", "Philadelphia Jr Flyers (Tier1) 16U", 0, 8, ""],
+    ["2026-09-26", "New Jersey Bandits 16U", 4, 3, ""],
+    ["2026-09-26", "New Jersey Bandits 16U", 3, 4, ""],
+    ["2026-09-27", "Team Long Island 16U", 6, 2, ""],
+    ["2026-09-27", "Team Long Island 16U", 3, 3, "OT"],
+    ["2026-10-03", "Winchendon School 16U", 0, 11, ""],
+    ["2026-10-03", "Lovell Academy Lions (Tier2) 16U", 0, 5, ""],
+    ["2026-10-04", "Connecticut Jr Rangers 16U", 4, 3, "SO"],
+    ["2026-10-10", "New Jersey Colonials (Tier1) 16U", 3, 4, "OT"],
+    ["2026-10-11", "New Jersey Colonials (Tier1) 16U", 3, 3, "OT"],
+    ["2026-10-31", "Atlantic Coast Academy 16U", 1, 2, ""],
+    ["2026-10-31", "Atlantic Coast Academy 16U", 1, 4, ""]
    ]
   }
  }
