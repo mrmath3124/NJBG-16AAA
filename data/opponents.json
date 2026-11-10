@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "source": "MYHockey Rankings team pages",
  "note": "Scouting data for upcoming opponents, keyed by the opponent name used in schedule.json. Written by scripts/update_opponents.py. games rows: [date, opponent, goals for, goals against, OT/SO note]. Add your own talking points to notes; they are kept.",
  "teams": {
@@ -7,9 +7,9 @@
    "myhr_name": "Stateline Hawks 16U",
    "team_id": 30072,
    "rating": 86.42,
-   "record": "15-8-1",
+   "record": "15-9-1",
    "gf": 64,
-   "ga": 31,
+   "ga": 32,
    "ranks": [
     "42nd USA Girls 16U Tier 2",
     "108th USA Girls 16U All"
@@ -35,6 +35,7 @@
     ["2026-10-10", "Philadelphia Jr Flyers (Orange) 16U", 5, 0, ""],
     ["2026-10-11", "West Seneca Wings 16U", 2, 0, ""],
     ["2026-10-11", "Jacksonville Lunas (Tier2) 16U", 8, 1, ""],
+    ["2026-10-12", "Hyland Hills Jaguars 16U", 0, 1, ""],
     ["2026-10-25", "Valley Jr Warriors (Tier2) 16U", 0, 0, ""],
     ["2026-10-25", "Boston Americans (Tier2) 19U", 1, 4, ""],
     ["2026-11-01", "Connecticut Jr Rangers 16U", 0, 4, ""],
@@ -55,7 +56,7 @@
    ],
    "notes": [],
    "games": [
-    ["2026-09-19", "North American Jr Winterhawks (Red) 16U", 4, 3, ""],
+    ["2026-09-19", "North American Jr Winterhawks (Blue) 16U", 4, 3, ""],
     ["2026-09-19", "Connecticut Jr Rangers 16U", 6, 9, ""],
     ["2026-09-20", "New Hampshire Mountain Cats 16U", 3, 2, ""],
     ["2026-09-26", "New Jersey Colonials (Tier1) 16U", 1, 4, ""],
@@ -81,9 +82,9 @@
    "myhr_name": "Team Long Island 16U",
    "team_id": 34160,
    "rating": 88.76,
-   "record": "13-6-1",
-   "gf": 60,
-   "ga": 41,
+   "record": "18-7-1",
+   "gf": 78,
+   "ga": 48,
    "ranks": [
     "10th USA Girls 16U Tier 2",
     "56th USA Girls 16U All"
@@ -109,7 +110,13 @@
     ["2026-10-11", "Connecticut Jr Rangers 16U", 2, 1, ""],
     ["2026-10-11", "Skaneateles Lakers 16U", 4, 1, ""],
     ["2026-10-12", "New Jersey Bandits 16U", 3, 4, ""],
-    ["2026-10-18", "New Jersey Bandits 16U", 3, 2, ""]
+    ["2026-10-18", "New Jersey Bandits 16U", 3, 2, ""],
+    ["2026-10-24", "Princeton Tiger Lilies (Tier1) 16U", 4, 1, ""],
+    ["2026-10-25", "Hartford Jr Wolfpack 16U", 5, 0, ""],
+    ["2026-11-06", "Etobicoke Dolphins U18 AA", 0, 2, ""],
+    ["2026-11-06", "Carleton Place Cyclones U18 AA", 3, 1, ""],
+    ["2026-11-07", "St Catharines Brock Jr Badgers U18 AA", 4, 2, ""],
+    ["2026-11-07", "Scarborough Sharks U18 AA", 2, 1, ""]
    ]
   },
   "Princeton Tiger Lilies": {
