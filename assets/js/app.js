@@ -3,7 +3,7 @@
   'use strict';
   var R = window.Rating;
   var $ = function (id) { return document.getElementById(id); };
-  var VIEWS = ['home', 'rating', 'games', 'stats', 'video', 'info'];
+  var VIEWS = ['home', 'rating', 'trend', 'games', 'stats', 'video', 'info'];
 
   function el(tag, props, kids) {
     var e = document.createElement(tag);
@@ -48,7 +48,7 @@
     D.next = (D.schedule.games || []).filter(function (g) { return g.date >= todayIso(); }).sort(function (a, b) { return a.date < b.date ? -1 : 1; })[0] || null;
     if (D.next && !D.next.opp_rating && D.opps[D.next.opponent]) D.next.opp_rating = D.opps[D.next.opponent].rating;
     W.opp = D.next && D.next.opp_rating ? D.next.opp_rating : D.ratings.team.rating;
-    renderFrame(); renderHome(); renderRating(); renderGames(); renderStats(); renderVideo(); renderInfo();
+    renderFrame(); renderHome(); renderRating(); renderTrend(); renderGames(); renderStats(); renderVideo(); renderInfo();
     wireWhatIf(); drawWhatIf();
     route();
   });
@@ -63,6 +63,7 @@
     var v = (location.hash || '#home').slice(1);
     if (VIEWS.indexOf(v) < 0) v = 'home';
     VIEWS.forEach(function (n) { $('view-' + n).hidden = n !== v; });
+    if (v === 'trend') drawTrend();
     document.querySelectorAll('.tabs a').forEach(function (a) {
       if (a.dataset.tab === v) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
@@ -331,6 +332,145 @@
         el('td', { text: f2(r.r1) }), el('td', { text: f2(r.l10) })
       ]));
     }
+  }
+
+  /* ---------- trend: rating over the season ---------- */
+  var T = null; // series built once; the chart redraws to fit its width
+  function svg(tag, attrs) {
+    var e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); });
+    return e;
+  }
+  function key(color, dash, dot) {
+    var s = svg('svg', { viewBox: '0 0 22 12', 'aria-hidden': 'true' });
+    if (dot) s.appendChild(svg('circle', { cx: 11, cy: 6, r: 4.5, fill: 'var(--ink)', stroke: 'var(--s1)', 'stroke-width': 2 }));
+    else s.appendChild(svg('line', { x1: 1, y1: 6, x2: 21, y2: 6, stroke: color, 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-dasharray': dash || 'none' }));
+    return s;
+  }
+
+  function renderTrend() {
+    var games = D.ratings.rated.slice().sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+    var pts = games.map(function (g) { return g.opp_rating + R.capMargin(g.gf - g.ga, D.max); });
+    var sum = 0;
+    var season = pts.map(function (p, i) { sum += p; return sum / (i + 1); });
+    var l10 = pts.map(function (p, i) { var w = pts.slice(Math.max(0, i - 9), i + 1); return w.reduce(function (s, x) { return s + x; }, 0) / w.length; });
+    var hist = (D.ratings.history || []).slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+    T = { games: games, pts: pts, season: season, l10: l10, hist: hist, sel: games.length - 1, width: 0 };
+
+    // Tiles
+    var team = D.ratings.team, prev = hist.length > 1 ? hist[hist.length - 2] : null;
+    var dr = prev ? team.rating - prev.rating : null;
+    var change = tile('This week', dr == null ? '—' : sg(dr), prev ? 'vs ' + day(prev.date) : 'First week tracked');
+    if (dr != null) change.querySelector('.big').className = 'big ' + tone(dr);
+    var dg = prev && prev.games != null ? games.length - prev.games : null;
+    $('trend-tiles').append(
+      tile('Rating', f2(team.rating), 'As of ' + day(D.ratings.updated), true),
+      change,
+      tile('Tier 1 rank', ord(team.rank_tier1), prev && prev.rank_tier1 ? ord(prev.rank_tier1) + ' last week' : team.tier1_label),
+      tile('Rated games', String(games.length), dg ? '+' + dg + ' this week' : 'All season')
+    );
+
+    // Legend
+    $('trend-legend').append(
+      el('span', null, [key('var(--c-season)'), 'Season rating']),
+      el('span', null, [key('var(--c-l10)', '5 4'), 'Last 10']),
+      hist.length ? el('span', null, [key(null, null, true), 'Official Wednesday rating']) : null
+    );
+    $('trend-note').textContent = 'The lines rework the rating after each game using every opponent\'s current rating, so early points can differ a little from what MYHockey showed at the time. The white dots are the official Wednesday numbers. Tap or drag across the chart to see any game.';
+
+    // Weekly table, newest first
+    var tb = $('trend-weeks').querySelector('tbody');
+    if (!hist.length) tb.appendChild(el('tr', null, [el('td', { cls: 'l muted', colspan: '5', text: 'Weekly numbers start with the next update.' })]));
+    hist.slice().reverse().forEach(function (h, i, arr) {
+      var before = arr[i + 1], d = before ? h.rating - before.rating : null;
+      tb.appendChild(el('tr', null, [
+        el('td', { cls: 'l', text: day(h.date) }), el('td', { text: f2(h.rating) }),
+        el('td', { cls: d == null ? 'muted' : tone(d), text: d == null ? '—' : sg(d) }),
+        el('td', { text: h.rank_tier1 ? ord(h.rank_tier1) : '—' }), el('td', { text: h.rank_all ? ord(h.rank_all) : '—' })
+      ]));
+    });
+
+    var box = $('trend-chart');
+    box.addEventListener('pointermove', pick); box.addEventListener('pointerdown', pick);
+    window.addEventListener('resize', function () { if (!$('view-trend').hidden) drawTrend(); });
+    showGame(T.sel);
+  }
+
+  function drawTrend() {
+    if (!T || !T.games.length) return;
+    var box = $('trend-chart'), W = box.clientWidth || 340;
+    if (W === T.width) return;
+    T.width = W;
+    var H = W < 480 ? 220 : 260, m = { l: 38, r: 44, t: 12, b: 26 };
+    var n = T.games.length, pw = W - m.l - m.r, ph = H - m.t - m.b;
+    var vals = T.season.concat(T.l10, T.hist.map(function (h) { return h.rating; }));
+    var lo = Math.floor(Math.min.apply(null, vals) * 2) / 2, hi = Math.ceil(Math.max.apply(null, vals) * 2) / 2;
+    if (hi - lo < 1) hi = lo + 1;
+    var step = hi - lo > 3 ? 1 : 0.5;
+    var x = function (i) { return m.l + (n === 1 ? pw / 2 : (i / (n - 1)) * pw); };
+    var y = function (v) { return m.t + (1 - (v - lo) / (hi - lo)) * ph; };
+    T.x = x; T.y = y; T.m = m; T.pw = pw;
+
+    var s = svg('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', tabindex: '0',
+      'aria-label': 'Line chart of the season rating and last 10 rating after each of ' + n + ' rated games. Latest season rating ' + f2(T.season[n - 1]) + '. Use the arrow keys to step through games.' });
+    // Gridlines and y ticks
+    for (var v = lo; v <= hi + 1e-9; v += step) {
+      s.appendChild(svg('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: 'var(--grid)', 'stroke-width': 1 }));
+      var t = svg('text', { x: m.l - 6, y: y(v) + 4, 'text-anchor': 'end' }); t.textContent = v.toFixed(step < 1 ? 1 : 0); s.appendChild(t);
+    }
+    // Month labels at the first game of each month
+    var lastMonth = '';
+    T.games.forEach(function (g, i) {
+      var mo = g.date.slice(0, 7);
+      if (mo === lastMonth) return; lastMonth = mo;
+      s.appendChild(svg('line', { x1: x(i), x2: x(i), y1: H - m.b, y2: H - m.b + 4, stroke: 'var(--line-strong)', 'stroke-width': 1 }));
+      var t = svg('text', { x: x(i), y: H - 6, 'text-anchor': i === 0 ? 'start' : 'middle' });
+      t.textContent = new Date(g.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short' }); s.appendChild(t);
+    });
+    s.appendChild(svg('line', { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b, stroke: 'var(--line-strong)', 'stroke-width': 1 }));
+    // Lines
+    function path(series) { return series.map(function (v, i) { return (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1); }).join(' '); }
+    s.appendChild(svg('path', { d: path(T.l10), fill: 'none', stroke: 'var(--c-l10)', 'stroke-width': 2, 'stroke-dasharray': '5 4', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+    s.appendChild(svg('path', { d: path(T.season), fill: 'none', stroke: 'var(--c-season)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+    // Official Wednesday dots, placed after the number of games each one counted
+    T.hist.forEach(function (h) {
+      var i = Math.max(0, Math.min(n - 1, (h.games || n) - 1));
+      s.appendChild(svg('circle', { cx: x(i), cy: y(h.rating), r: 4.5, fill: 'var(--ink)', stroke: 'var(--s1)', 'stroke-width': 2 }));
+    });
+    // End label for the season line
+    var et = svg('text', { x: x(n - 1) + 8, y: y(T.season[n - 1]) + 4, cls: 'end' }); et.setAttribute('class', 'end');
+    et.textContent = f2(T.season[n - 1]); s.appendChild(et);
+    // Crosshair and focus dots
+    T.cross = svg('line', { y1: m.t, y2: H - m.b, stroke: 'var(--line-strong)', 'stroke-width': 1 });
+    T.dotS = svg('circle', { r: 4.5, fill: 'var(--c-season)', stroke: 'var(--s1)', 'stroke-width': 2 });
+    T.dotL = svg('circle', { r: 4.5, fill: 'var(--c-l10)', stroke: 'var(--s1)', 'stroke-width': 2 });
+    s.append(T.cross, T.dotL, T.dotS);
+    s.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); showGame(Math.max(0, Math.min(n - 1, T.sel + (e.key === 'ArrowRight' ? 1 : -1)))); }
+    });
+    box.replaceChildren(s);
+    showGame(T.sel);
+  }
+
+  function pick(e) {
+    if (!T || !T.x) return;
+    var r = $('trend-chart').getBoundingClientRect(), px = e.clientX - r.left, n = T.games.length;
+    var i = Math.round(((px - T.m.l) / T.pw) * (n - 1));
+    showGame(Math.max(0, Math.min(n - 1, i)));
+  }
+
+  function showGame(i) {
+    T.sel = i;
+    var g = T.games[i];
+    $('trend-readout').replaceChildren(
+      el('b', { text: 'Game ' + (i + 1) + ' · ' + day(g.date) + ' · ' + resultText(g) + (g.note ? ' ' + g.note : '') + ' vs ' + g.opponent }),
+      el('span', { cls: 'num', text: 'Season ' + f2(T.season[i]) + ' · Last 10 ' + f2(T.l10[i]) + ' · Game points ' + f2(T.pts[i]) })
+    );
+    if (!T.cross) return;
+    var cx = T.x(i);
+    T.cross.setAttribute('x1', cx); T.cross.setAttribute('x2', cx);
+    T.dotS.setAttribute('cx', cx); T.dotS.setAttribute('cy', T.y(T.season[i]));
+    T.dotL.setAttribute('cx', cx); T.dotL.setAttribute('cy', T.y(T.l10[i]));
   }
 
   /* ---------- games ---------- */
