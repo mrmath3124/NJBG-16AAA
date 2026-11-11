@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10",
+ "updated": "2026-11-11",
  "source": "MYHockey Rankings team pages",
  "note": "Scouting data for upcoming opponents, keyed by the opponent name used in schedule.json. Written by scripts/update_opponents.py. games rows: [date, opponent, goals for, goals against, OT/SO note]. Add your own talking points to notes; they are kept.",
  "teams": {
@@ -11,8 +11,8 @@
    "gf": 64,
    "ga": 32,
    "ranks": [
-    "42nd USA Girls 16U Tier 2",
-    "108th USA Girls 16U All"
+    "48th USA Girls 16U Tier 2",
+    "113th USA Girls 16U All"
    ],
    "notes": [],
    "games": [
@@ -46,12 +46,12 @@
   "Skaneateles": {
    "myhr_name": "Skaneateles Lakers 16U",
    "team_id": 26373,
-   "rating": 87.95,
-   "record": "10-7-3",
-   "gf": 61,
+   "rating": 88.44,
+   "record": "11-7-3",
+   "gf": 67,
    "ga": 55,
    "ranks": [
-    "16th USA Girls 16U Tier 2",
+    "18th USA Girls 16U Tier 2",
     "68th USA Girls 16U All"
    ],
    "notes": [],
@@ -75,19 +75,20 @@
     ["2026-11-06", "Philadelphia Jr Flyers (Black) 16U", 3, 2, "SO"],
     ["2026-11-06", "Pittsburgh Steel City Selects (Minor) 16U", 3, 0, ""],
     ["2026-11-07", "Lovell Academy Lions (Tier2) 16U", 2, 1, ""],
+    ["2026-11-07", "Toronto Leaside Wildcats (#3822) U18 BB", 6, 0, ""],
     ["2026-11-08", "Philadelphia Jr Flyers (Black) 16U", 1, 2, ""]
    ]
   },
   "Team Long Island": {
    "myhr_name": "Team Long Island 16U",
    "team_id": 34160,
-   "rating": 88.76,
+   "rating": 89.27,
    "record": "18-7-1",
    "gf": 78,
    "ga": 48,
    "ranks": [
     "10th USA Girls 16U Tier 2",
-    "56th USA Girls 16U All"
+    "50th USA Girls 16U All"
    ],
    "notes": [],
    "games": [
@@ -116,19 +117,19 @@
     ["2026-11-06", "Etobicoke Dolphins U18 AA", 0, 2, ""],
     ["2026-11-06", "Carleton Place Cyclones U18 AA", 3, 1, ""],
     ["2026-11-07", "St Catharines Brock Jr Badgers U18 AA", 4, 2, ""],
-    ["2026-11-07", "Scarborough Sharks U18 AA", 2, 1, ""]
+    ["2026-11-07", "Scarborough Sharks U18 AA", 2, 1, "SO"]
    ]
   },
   "Princeton Tiger Lilies": {
    "myhr_name": "Princeton Tiger Lilies (Tier1) 16U",
    "team_id": 9805,
-   "rating": 87.45,
-   "record": "4-19-2",
-   "gf": 39,
-   "ga": 108,
+   "rating": 87.37,
+   "record": "4-20-2",
+   "gf": 40,
+   "ga": 112,
    "ranks": [
-    "51st USA Girls 16U Tier 1",
-    "83rd USA Girls 16U All"
+    "50th USA Girls 16U Tier 1",
+    "88th USA Girls 16U All"
    ],
    "notes": [],
    "games": [
@@ -153,6 +154,7 @@
     ["2026-10-04", "Connecticut Jr Rangers 16U", 4, 3, "SO"],
     ["2026-10-10", "New Jersey Colonials (Tier1) 16U", 3, 4, "OT"],
     ["2026-10-11", "New Jersey Colonials (Tier1) 16U", 3, 3, "OT"],
+    ["2026-10-24", "Team Long Island 16U", 1, 4, ""],
     ["2026-10-31", "Atlantic Coast Academy 16U", 1, 2, ""],
     ["2026-10-31", "Atlantic Coast Academy 16U", 1, 4, ""],
     ["2026-11-08", "Philadelphia Jr Flyers (Tier1) 16U", 0, 5, ""],
