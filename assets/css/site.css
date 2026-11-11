@@ -145,5 +145,16 @@ input[type="number"] { width: 100%; font: inherit; font-variant-numeric: tabular
 .soon a { background: var(--s1); border: 1px dashed var(--line-strong); padding: 12px 8px; display: flex; flex-direction: column; gap: 4px; text-align: center; text-decoration: none; color: var(--ink); min-height: 72px; justify-content: center; }
 .soon b { font-family: var(--display); font-size: 15px; }
 .soon span { font-size: 11px; line-height: 14px; color: var(--muted); }
+/* Rating trend chart */
+:root { --c-season: #e8479a; --c-l10: #bd8a3a; --grid: #2c2631; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; line-height: 18px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend svg { width: 22px; height: 12px; flex: none; }
+.readout { min-height: 40px; background: var(--s2); padding: 8px 10px; font-size: 13px; line-height: 18px; display: flex; flex-direction: column; }
+.readout b { font-family: var(--display); font-size: 14px; }
+.chart { position: relative; touch-action: pan-y; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { fill: var(--muted); font-family: var(--sans); font-size: 11px; font-variant-numeric: tabular-nums; }
+.chart .end { fill: var(--ink); font-family: var(--display); font-weight: 700; font-size: 13px; }
 footer.foot { padding: 8px 16px 24px; font-size: 12px; line-height: 16px; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
 @media (prefers-reduced-motion: no-preference) { .btn, .tabs a { transition: color 120ms, filter 120ms; } }
