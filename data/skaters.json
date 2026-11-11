@@ -1,6 +1,151 @@
 {
- "updated": "",
- "source_label": "AAHA Tier I Girls (GameSheet) and TGHF league stats",
- "source_url": "https://gamesheetstats.com/",
- "players": []
+ "updated": "2026-11-11",
+ "source_label": "League games only: 7 of 30 so far (4 Atlantic District games on GameSheet, 3 TGHF games on TimeToScore). Tournament games are pending",
+ "source_url": "https://gamesheetstats.com/seasons/15085/teams/523327",
+ "players": [
+  {
+   "name": "Chloe L.",
+   "number": 20,
+   "gp": 7,
+   "g": 3,
+   "a": 2,
+   "pim": 2
+  },
+  {
+   "name": "Payton S.",
+   "number": 19,
+   "gp": 7,
+   "g": 2,
+   "a": 3,
+   "pim": 8
+  },
+  {
+   "name": "Chloe Z.",
+   "number": 18,
+   "gp": 7,
+   "g": 2,
+   "a": 2,
+   "pim": 0
+  },
+  {
+   "name": "Grace T.",
+   "number": 2,
+   "gp": 7,
+   "g": 1,
+   "a": 3,
+   "pim": 0
+  },
+  {
+   "name": "Emma W.",
+   "number": 15,
+   "gp": 5,
+   "g": 3,
+   "a": 0,
+   "pim": 2
+  },
+  {
+   "name": "Teagen N.",
+   "number": 16,
+   "gp": 7,
+   "g": 1,
+   "a": 2,
+   "pim": 2
+  },
+  {
+   "name": "Stephanie W.",
+   "number": 10,
+   "gp": 7,
+   "g": 1,
+   "a": 0,
+   "pim": 14
+  },
+  {
+   "name": "Sydney C.",
+   "number": 13,
+   "gp": 7,
+   "g": 1,
+   "a": 0,
+   "pim": 2
+  },
+  {
+   "name": "Zoe A.",
+   "number": 4,
+   "gp": 7,
+   "g": 1,
+   "a": 0,
+   "pim": 6
+  },
+  {
+   "name": "Eva M.",
+   "number": 9,
+   "gp": 7,
+   "g": 0,
+   "a": 1,
+   "pim": 0
+  },
+  {
+   "name": "Violet F.",
+   "number": 23,
+   "gp": 7,
+   "g": 0,
+   "a": 1,
+   "pim": 6
+  },
+  {
+   "name": "Alyssar G.",
+   "number": 5,
+   "gp": 3,
+   "g": 0,
+   "a": 0,
+   "pim": 0
+  },
+  {
+   "name": "Avery C.",
+   "number": 28,
+   "gp": 5,
+   "g": 0,
+   "a": 0,
+   "pim": 0
+  },
+  {
+   "name": "Emma L.",
+   "number": 14,
+   "gp": 7,
+   "g": 0,
+   "a": 0,
+   "pim": 0
+  },
+  {
+   "name": "Hala G.",
+   "number": 5,
+   "gp": 2,
+   "g": 0,
+   "a": 0,
+   "pim": 0
+  },
+  {
+   "name": "Harriett M.",
+   "number": 17,
+   "gp": 7,
+   "g": 0,
+   "a": 0,
+   "pim": 0
+  },
+  {
+   "name": "Madeline K.",
+   "number": 8,
+   "gp": 7,
+   "g": 0,
+   "a": 0,
+   "pim": 0
+  },
+  {
+   "name": "Reaghan L.",
+   "number": 25,
+   "gp": 7,
+   "g": 0,
+   "a": 0,
+   "pim": 2
+  }
+ ]
 }
