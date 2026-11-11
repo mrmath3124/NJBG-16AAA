@@ -238,15 +238,19 @@ def build(header, rated, pending, notes, old):
         "note": g["note"], "opp_rating": g.get("opp_rating"), "cross_age": is_cross_age(g["opponent"], CONFIG["age"]),
     } for g in pending]
     today = dt.datetime.now(dt.timezone(dt.timedelta(hours=-5))).date().isoformat()
+    # One row per Wednesday update for the Trend tab; a second run the same day replaces it.
+    history = [h for h in (old or {}).get("history", []) if h.get("date") != today]
+    history.append({"date": today, "rating": team.get("rating"), "rank_tier1": team.get("rank_tier1"),
+                    "rank_all": team.get("rank_all"), "games": len(rated)})
     return {
         "updated": today, "season": CONFIG["season"], "team_id": CONFIG["team_id"],
         "source": f"{BASE}/team_info.php?y={CONFIG['season']}&t={CONFIG['team_id']}",
-        "team": team, "rated": rated, "pending": pend,
+        "team": team, "rated": rated, "pending": pend, "history": history,
     }
 
 
 def same_data(a, b):
-    strip = lambda d: {k: v for k, v in d.items() if k != "updated"}
+    strip = lambda d: {k: v for k, v in d.items() if k not in ("updated", "history")}
     return strip(a) == strip(b)
 
 
