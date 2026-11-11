@@ -345,5 +345,28 @@
    "note": ""
   }
  ],
- "pending": []
+ "pending": [],
+ "history": [
+  {
+   "date": "2026-10-28",
+   "rating": 88.97,
+   "rank_tier1": 42,
+   "rank_all": 55,
+   "games": 23
+  },
+  {
+   "date": "2026-11-04",
+   "rating": 88.66,
+   "rank_tier1": 46,
+   "rank_all": 60,
+   "games": 26
+  },
+  {
+   "date": "2026-11-11",
+   "rating": 88.59,
+   "rank_tier1": 47,
+   "rank_all": 66,
+   "games": 30
+  }
+ ]
 }
