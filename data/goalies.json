@@ -1,5 +1,20 @@
 {
- "updated": "",
+ "updated": "2026-11-14",
  "source_label": "Team goalie stat sheet",
- "goalies": []
+ "goalies": [
+  {
+   "name": "Aubrianna J.",
+   "gp": 27,
+   "sa": 506,
+   "ga": 42,
+   "full_games": 17.21
+  },
+  {
+   "name": "Shane H.",
+   "gp": 25,
+   "sa": 381,
+   "ga": 40,
+   "full_games": 14.93
+  }
+ ]
 }
