@@ -158,3 +158,13 @@ input[type="number"] { width: 100%; font: inherit; font-variant-numeric: tabular
 .chart .end { fill: var(--ink); font-family: var(--display); font-weight: 700; font-size: 13px; }
 footer.foot { padding: 8px 16px 24px; font-size: 12px; line-height: 16px; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
 @media (prefers-reduced-motion: no-preference) { .btn, .tabs a { transition: color 120ms, filter 120ms; } }
+/* Goalie game logs */
+details.log { background: var(--s1); border: 1px solid var(--line); border-radius: 4px; }
+details.log summary { cursor: pointer; padding: 12px; min-height: 44px; font-size: 15px; line-height: 20px; }
+details.log summary b { font-family: var(--display); }
+details.log[open] summary { border-bottom: 1px solid var(--line); }
+.t .sub { font-weight: 400; }
+.t.tight th, .t.tight td { padding: 8px 6px; }
+.t.tight td.wrap { min-width: 8.5rem; }
+.t.tight .sub { display: block; }
+.card.tiers { padding: 12px; }
