@@ -502,21 +502,132 @@
         drawSkaters();
       });
     });
-    var gb = $('goalies').querySelector('tbody'), gs = D.goalies.goalies || [];
-    if (!gs.length) gb.appendChild(el('tr', null, [el('td', { cls: 'l muted', colspan: '6', text: 'Goalie stats are on the way.' })]));
-    gs.forEach(function (g) {
-      var sv = g.sa ? (g.sa - g.ga) / g.sa : null;
-      var gaa = g.full_games ? g.ga / g.full_games : g.gp ? g.ga / g.gp : null;
-      gb.appendChild(el('tr', null, [
-        el('td', { cls: 'l', text: (g.number ? '#' + g.number + ' ' : '') + g.name }), el('td', { text: String(g.gp) }), el('td', { text: String(g.sa) }),
-        el('td', { text: String(g.ga) }), el('td', { text: sv == null ? '—' : sv.toFixed(3).replace(/^0/, '') }), el('td', { text: gaa == null ? '—' : gaa.toFixed(2) })
-      ]));
-    });
-    $('goalies-note').textContent = (D.goalies.source_label || '') + (D.goalies.updated ? ', updated ' + day(D.goalies.updated) : '') + '. GAA uses full-game equivalents when a goalie splits games.';
+    renderGoalies();
     var sn = $('skaters-note');
     sn.append((D.skaters.source_label || 'League stats') + (D.skaters.updated ? ', updated ' + day(D.skaters.updated) : '') + '. ');
     if (D.skaters.source_url) sn.appendChild(el('a', { href: D.skaters.source_url, rel: 'noopener', target: '_blank', text: 'Source' }));
   }
+  /* ---------- goalies ----------
+     A goalie's "games" list holds what she faced in each game: sa (shots), ga (actual goals while she was in net),
+     and full: true when she played the whole game. Split games are counted as half games, so GAA doubles their goals,
+     the same way the team goalie stat sheet does. */
+  var TIERS = [
+    { key: 'tough', label: 'Tougher', sub: 'rated 1+ goal better than us' },
+    { key: 'even', label: 'Even', sub: 'within 1 goal of us' },
+    { key: 'easy', label: 'Easier', sub: 'rated 1+ goal below us' }
+  ];
+  function sv3(x) { return x == null ? '—' : x.toFixed(3).replace(/^0/, ''); }
+  function words(s) { return norm(s).replace(/[^a-z0-9 ]/g, '').split(' ').filter(Boolean); }
+  // Finds the MYHockey game for a goalie's game: same date, then the final score, then the most opponent-name words in common
+  function ratedFor(g, used) {
+    var c = (D.ratings.rated || []).filter(function (r) { return r.date === g.date && used.indexOf(r) < 0; });
+    if (g.score) { var s = c.filter(function (r) { return r.gf + '-' + r.ga === String(g.score).replace(/\s/g, ''); }); if (s.length) c = s; }
+    if (c.length > 1 && g.opp) {
+      var w = words(g.opp), best = -1, pick = [];
+      c.forEach(function (r) {
+        var have = words(r.opponent), n = w.filter(function (x) { return have.indexOf(x) >= 0; }).length;
+        if (n > best) { best = n; pick = [r]; } else if (n === best) pick.push(r);
+      });
+      c = pick;
+    }
+    if (c[0]) used.push(c[0]);
+    return c[0] || null;
+  }
+  function tierOf(oppRating) {
+    if (oppRating == null) return null;
+    var d = oppRating - D.ratings.team.rating;
+    return d >= 1 ? 'tough' : d <= -1 ? 'easy' : 'even';
+  }
+  function gStats(games) {
+    var s = { gp: games.length, sa: 0, ga: 0, eq: 0, fg: 0 };
+    games.forEach(function (g) { var f = !!g.full; s.sa += g.sa || 0; s.ga += g.ga || 0; s.eq += (g.ga || 0) * (f ? 1 : 2); s.fg += f ? 1 : 0.5; });
+    s.sv = s.sa ? (s.sa - s.ga) / s.sa : null;
+    s.gaa = s.gp ? s.eq / s.gp : null;
+    s.spg = s.fg ? s.sa / s.fg : null;
+    return s;
+  }
+  function gName(g) { return (g.number ? '#' + g.number + ' ' : '') + g.name; }
+  function renderGoalies() {
+    var gs = D.goalies.goalies || [], gb = $('goalies').querySelector('tbody');
+    gs.forEach(function (g) {
+      var used = [];
+      g.log = (g.games || []).map(function (x) {
+        var r = ratedFor(x, used);
+        return Object.assign({}, x, { rated: r, opp_rating: r ? r.opp_rating : null, tier: tierOf(r ? r.opp_rating : null) });
+      }).sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+    });
+
+    // Season line: from the game log when there is one, otherwise from the totals typed into goalies.json
+    if (!gs.length) gb.appendChild(el('tr', null, [el('td', { cls: 'l muted', colspan: '6', text: 'Goalie stats are on the way.' })]));
+    gs.forEach(function (g) {
+      var t;
+      if (g.log.length) t = gStats(g.log);
+      else t = { gp: g.gp, sa: g.sa, ga: g.ga, sv: g.sa ? (g.sa - g.ga) / g.sa : null, gaa: g.full_games ? g.ga / g.full_games : g.gp ? g.ga / g.gp : null };
+      gb.appendChild(el('tr', null, [
+        el('td', { cls: 'l', text: gName(g) }), el('td', { text: String(t.gp) }), el('td', { text: String(t.sa) }),
+        el('td', { text: String(t.ga) }), el('td', { text: sv3(t.sv) }), el('td', { text: t.gaa == null ? '—' : t.gaa.toFixed(2) })
+      ]));
+    });
+    $('goalies-note').textContent = (D.goalies.source_label || '') + (D.goalies.updated ? ', updated ' + day(D.goalies.updated) : '') +
+      '. GA is the actual goals scored while each goalie was in net. Our goalies split most games, so GAA counts a split game as half a game.';
+
+    // By opponent strength
+    var box = $('goalie-tiers'), withLog = gs.filter(function (g) { return g.log.length; });
+    $('goalie-tiers-wrap').hidden = !withLog.length;
+    gs.forEach(function (g) {
+      if (!g.log.length) { box.appendChild(el('p', { cls: 'note', text: gName(g) + ': game-by-game numbers are on the way.' })); return; }
+      var tb = el('tbody');
+      TIERS.concat([{ key: null, label: 'All games', sub: '' }]).forEach(function (t) {
+        var rows = t.key ? g.log.filter(function (x) { return x.tier === t.key; }) : g.log;
+        if (t.key && !rows.length) return;
+        var s = gStats(rows);
+        tb.appendChild(el('tr', { cls: t.key ? '' : 'sel' }, [
+          el('td', { cls: 'l' }, [el('b', { text: t.label })]),
+          el('td', { text: String(s.gp) }), el('td', { text: sv3(s.sv) }), el('td', { text: s.gaa == null ? '—' : s.gaa.toFixed(2) }),
+          el('td', { text: s.spg == null ? '—' : s.spg.toFixed(1) }), el('td', { text: String(s.ga) })
+        ]));
+      });
+      box.appendChild(el('div', { cls: 'card tiers' }, [
+        el('h3', { text: gName(g) }),
+        el('div', { cls: 'scroll' }, [el('table', { cls: 't tight' }, [
+          el('thead', null, [el('tr', null, [el('th', { cls: 'l', text: 'Opponents' }), el('th', { text: 'GP' }), el('th', { text: 'SV%' }), el('th', { text: 'GAA' }), el('th', { text: 'Shots' }), el('th', { text: 'GA' })])]),
+          tb
+        ])])
+      ]));
+    });
+    var unrated = withLog.reduce(function (n, g) { return n + g.log.filter(function (x) { return !x.tier; }).length; }, 0);
+    $('goalie-tiers-note').textContent = 'Opponents are grouped by their MYHockey rating compared with ours (' + f2(D.ratings.team.rating) +
+      '). Tougher teams are rated at least 1.00 higher (about a goal a game better), easier teams at least 1.00 lower, and even teams are in between. Shots is shots faced per full game. Groups update each Wednesday with the new ratings.' +
+      (unrated ? ' ' + unrated + (unrated === 1 ? ' game is' : ' games are') + ' not rated yet and only counts in All games.' : '');
+
+    // Game logs, newest first
+    var logs = $('goalie-logs');
+    withLog.forEach(function (g) {
+      var tb = el('tbody');
+      g.log.slice().reverse().forEach(function (x) {
+        var t = TIERS.filter(function (k) { return k.key === x.tier; })[0];
+        tb.appendChild(el('tr', null, [
+          el('td', { cls: 'l', text: day(x.date) }),
+          el('td', { cls: 'l wrap' }, [x.rated ? x.rated.opponent : (x.opp || ''), el('span', { cls: 'sub', text: ' ' + (t ? t.label : 'Not rated') + (x.opp_rating == null ? '' : ', ' + f2(x.opp_rating)) })]),
+          el('td', { text: sv3(x.sa ? (x.sa - x.ga) / x.sa : null) }),
+          el('td', { text: String(x.sa) }), el('td', { text: String(x.ga) }),
+          el('td', { cls: 'l muted', text: x.full ? 'Full' : 'Split' }),
+          el('td', { cls: 'l', text: x.rated ? resultText(x.rated) + (x.rated.note ? ' ' + x.rated.note : '') : (x.score || '') })
+        ]));
+      });
+      logs.appendChild(el('details', { cls: 'log' }, [
+        el('summary', null, [el('b', { text: gName(g) }), el('span', { cls: 'muted', text: ' ' + g.log.length + ' games' })]),
+        el('div', { cls: 'scroll' }, [el('table', { cls: 't tight' }, [
+          el('thead', null, [el('tr', null, ['Date', 'Opponent', 'SV%', 'SA', 'GA', 'Time', 'Final'].map(function (h, i) {
+            return el('th', { cls: i < 2 || i > 4 ? 'l' : '', text: h });
+          }))]),
+          tb
+        ])])
+      ]));
+    });
+    $('goalie-logs-wrap').hidden = !withLog.length;
+  }
+
   function drawSkaters() {
     var tb = $('skaters').querySelector('tbody'); tb.replaceChildren();
     var ps = (D.skaters.players || []).slice();
