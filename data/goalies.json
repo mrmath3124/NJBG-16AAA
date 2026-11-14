@@ -7,7 +7,7 @@
    "number": 31,
    "games": [
     {"date": "2026-08-28", "opp": "Boston Advantage (Blue) 16U", "score": "2-1", "sa": 16, "ga": 1},
-    {"date": "2026-08-28", "opp": "Carolina Junior Canes (Tier1) 16U", "score": "4-0", "sa": 7, "ga": 0, "full": true},
+    {"date": "2026-08-28", "opp": "Carolina Junior Canes (Tier1) 16U", "score": "4-0", "sa": 7, "ga": 0},
     {"date": "2026-08-29", "opp": "North American Jr Winterhawks (Blue) 16U", "score": "2-1", "sa": 11, "ga": 0},
     {"date": "2026-08-29", "opp": "Boston Hockey Group 16U", "score": "2-5", "sa": 17, "ga": 3},
     {"date": "2026-08-30", "opp": "Connecticut Polar Bears (Prep) 16U", "score": "2-3", "sa": 19, "ga": 0},
@@ -38,10 +38,33 @@
   {
    "name": "Shayne H.",
    "number": 30,
-   "gp": 25,
-   "sa": 381,
-   "ga": 40,
-   "full_games": 14.93
+   "games": [
+    {"date": "2026-08-28", "opp": "Boston Advantage (Blue) 16U", "score": "2-1", "sa": 7, "ga": 0},
+    {"date": "2026-08-28", "opp": "Carolina Junior Canes (Tier1) 16U", "score": "4-0", "sa": 5, "ga": 0},
+    {"date": "2026-08-29", "opp": "North American Jr Winterhawks (Blue) 16U", "score": "2-1", "sa": 14, "ga": 1},
+    {"date": "2026-08-29", "opp": "Boston Hockey Group 16U", "score": "2-5", "sa": 16, "ga": 2},
+    {"date": "2026-08-30", "opp": "Connecticut Polar Bears (Prep) 16U", "score": "2-3", "sa": 20, "ga": 3},
+    {"date": "2026-09-04", "opp": "Team Wisconsin 16U", "score": "0-2", "sa": 17, "ga": 1},
+    {"date": "2026-09-04", "opp": "North American Hockey Academy (Red) 16U", "score": "0-6", "sa": 10, "ga": 4},
+    {"date": "2026-09-05", "opp": "Bay State Breakers (Green) 16U", "score": "5-3", "sa": 11, "ga": 1},
+    {"date": "2026-09-05", "opp": "Anaheim Lady Ducks (Tier1) 16U", "score": "2-1", "sa": 24, "ga": 1},
+    {"date": "2026-09-06", "opp": "New Hampshire Mountain Cats 16U", "score": "1-2", "sa": 8, "ga": 1},
+    {"date": "2026-09-20", "opp": "Connecticut Ice Cats (Tier2) 16U", "score": "3-1", "sa": 7, "ga": 1},
+    {"date": "2026-09-26", "opp": "Princeton Tiger Lilies (Tier1) 16U", "score": "4-3", "sa": 26, "ga": 3, "full": true},
+    {"date": "2026-10-04", "opp": "Stateline Hawks 16U", "score": "1-0", "sa": 11, "ga": 0},
+    {"date": "2026-10-10", "opp": "Ontario Hockey Academy Maroon (#7094) U18 AA", "score": "2-0", "sa": 10, "ga": 0},
+    {"date": "2026-10-10", "opp": "Florida Alliance 16U", "score": "5-2", "sa": 4, "ga": 1},
+    {"date": "2026-10-11", "opp": "New Hampshire Mountain Cats 16U", "score": "2-1", "sa": 10, "ga": 1},
+    {"date": "2026-10-11", "opp": "Boston Advantage (White) 16U", "score": "3-1", "sa": 9, "ga": 1},
+    {"date": "2026-10-18", "opp": "Team Long Island 16U", "score": "2-3", "sa": 10, "ga": 0},
+    {"date": "2026-10-24", "opp": "Connecticut Ice Cats (Tier2) 16U", "score": "7-0", "sa": 3, "ga": 0},
+    {"date": "2026-10-25", "opp": "Atlantic Coast Academy 16U", "score": "3-4", "sa": 33, "ga": 4, "full": true},
+    {"date": "2026-10-31", "opp": "Philadelphia Jr Flyers (Tier1) 16U", "score": "1-6", "sa": 61, "ga": 6, "full": true},
+    {"date": "2026-11-06", "opp": "Bishop Kearney Selects 16U", "score": "0-11", "sa": 23, "ga": 5},
+    {"date": "2026-11-06", "opp": "Rochester Jr Americans (Tier1) 16U", "score": "5-3", "sa": 9, "ga": 1},
+    {"date": "2026-11-07", "opp": "Connecticut Jr Rangers 16U", "score": "2-3", "sa": 16, "ga": 1},
+    {"date": "2026-11-07", "opp": "St Catharines Brock Jr Badgers U18 AA", "score": "2-3", "sa": 17, "ga": 2}
+   ]
   }
  ]
 }
