@@ -17,12 +17,20 @@ All in the `data` folder. On GitHub, open the file, click the pencil, edit, then
 | File | What goes in it |
 | --- | --- |
 | `schedule.json` | Upcoming games: `date` (YYYY-MM-DD), `time`, `opponent`, `rink`, `town`, `arrive`, and `opp_rating` if you know it |
-| `goalies.json` | Goalie lines: `name` (First L.), `number`, `gp`, `sa`, `ga`, and `full_games` (full-game equivalents, for split games) |
+| `goalies.json` | Each goalie: `name` (First L.), `number`, and a `games` list, one line per game: `date`, `opp` (the MYHockey team name), `score` (the final, us first, e.g. `"2-3"`), `sa` (shots she faced), `ga` (actual goals while she was in net), and `"full": true` if she played the whole game. The site works out the season line, the opponent-strength table and the game log from this list. A goalie without a `games` list can use season totals instead: `gp`, `sa`, `ga`, `full_games` |
 | `skaters.json` | Skater lines: `name` (First L.), `number`, `gp`, `g`, `a`, `pim`, and `hudl` (a link, optional) |
 | `videos.json` | Hudl links: `game_date`, `opponent`, `label`, `url`, and `player` (optional) |
 | `site.json` | Announcement, rinks, disclaimer |
 | `opponent_ids.json` | MYHockey team id for each opponent name in `schedule.json` (the number in the team's MYHockey address). Fix a wrong match here |
 | `opponents.json` | Written by the Game notes workflow. You can type your own talking points into a team's `notes` list; they are kept |
+
+Example `goalies.json` game line (a split game, so GAA counts it as half a game):
+
+```json
+{"date": "2026-11-07", "opp": "Connecticut Jr Rangers 16U", "score": "2-3", "sa": 13, "ga": 1}
+```
+
+The opponent-strength table groups each goalie's games by the opponent's MYHockey rating compared with ours: tougher (1.00 or more above), even, and easier (1.00 or more below). It matches each game to MYHockey by date and final score, so a game shows up there once MYHockey has rated it.
 
 Example `schedule.json` row:
 
