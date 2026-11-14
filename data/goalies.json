@@ -4,13 +4,15 @@
  "goalies": [
   {
    "name": "Aubrianna J.",
+   "number": 31,
    "gp": 27,
    "sa": 506,
    "ga": 42,
    "full_games": 17.21
   },
   {
-   "name": "Shane H.",
+   "name": "Shayne H.",
+   "number": 30,
    "gp": 25,
    "sa": 381,
    "ga": 40,
