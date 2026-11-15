@@ -1,48 +1,8 @@
 {
- "updated": "2026-11-11",
+ "updated": "2026-11-15",
  "source": "MYHockey Rankings team pages",
  "note": "Scouting data for upcoming opponents, keyed by the opponent name used in schedule.json. Written by scripts/update_opponents.py. games rows: [date, opponent, goals for, goals against, OT/SO note]. Add your own talking points to notes; they are kept.",
  "teams": {
-  "Stateline Hawks": {
-   "myhr_name": "Stateline Hawks 16U",
-   "team_id": 30072,
-   "rating": 86.42,
-   "record": "15-9-1",
-   "gf": 64,
-   "ga": 32,
-   "ranks": [
-    "48th USA Girls 16U Tier 2",
-    "113th USA Girls 16U All"
-   ],
-   "notes": [],
-   "games": [
-    ["2026-09-01", "Connecticut Ice Cats (Tier2) 16U", 1, 2, ""],
-    ["2026-09-04", "Princeton Tiger Lilies (Tier2) 16U", 2, 0, ""],
-    ["2026-09-04", "Worcester Jr Crusaders (Platinum) 16U", 1, 2, ""],
-    ["2026-09-05", "Saugerties Fillies 16U", 2, 1, ""],
-    ["2026-09-05", "Philadelphia Jr Flyers (Orange) 16U", 3, 2, "SO"],
-    ["2026-09-06", "Worcester Jr Crusaders (Platinum) 16U", 5, 4, "SO"],
-    ["2026-09-06", "Saugerties Fillies 16U", 0, 2, ""],
-    ["2026-09-12", "Hartford Jr Wolfpack 16U", 4, 0, ""],
-    ["2026-09-13", "New Jersey Colonials (Tier2) 16U", 3, 0, ""],
-    ["2026-09-13", "New York City Hockey Club 16U", 6, 0, ""],
-    ["2026-09-20", "Hartford Jr Wolfpack 16U", 2, 1, ""],
-    ["2026-09-26", "Connecticut Polar Bears (White) 16U", 9, 0, ""],
-    ["2026-09-27", "Connecticut Ice Cats (Tier2) 16U", 2, 0, ""],
-    ["2026-10-03", "Norwich Hockey Club 19U", 2, 1, ""],
-    ["2026-10-04", "New Jersey Bandits 16U", 0, 1, ""],
-    ["2026-10-10", "Pittsburgh Steel City Selects (Minor) 16U", 2, 3, ""],
-    ["2026-10-10", "Philadelphia Jr Flyers (Orange) 16U", 5, 0, ""],
-    ["2026-10-11", "West Seneca Wings 16U", 2, 0, ""],
-    ["2026-10-11", "Jacksonville Lunas (Tier2) 16U", 8, 1, ""],
-    ["2026-10-12", "Hyland Hills Jaguars 16U", 0, 1, ""],
-    ["2026-10-25", "Valley Jr Warriors (Tier2) 16U", 0, 0, ""],
-    ["2026-10-25", "Boston Americans (Tier2) 19U", 1, 4, ""],
-    ["2026-11-01", "Connecticut Jr Rangers 16U", 0, 4, ""],
-    ["2026-11-07", "New Jersey Colonials (Tier2) 16U", 3, 1, ""],
-    ["2026-11-08", "Saugerties Fillies 16U", 1, 2, ""]
-   ]
-  },
   "Skaneateles": {
    "myhr_name": "Skaneateles Lakers 16U",
    "team_id": 26373,
