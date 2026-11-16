@@ -1,44 +1,8 @@
 {
- "updated": "2026-11-15",
+ "updated": "2026-11-16",
  "source": "MYHockey Rankings team pages",
  "note": "Scouting data for upcoming opponents, keyed by the opponent name used in schedule.json. Written by scripts/update_opponents.py. games rows: [date, opponent, goals for, goals against, OT/SO note]. Add your own talking points to notes; they are kept.",
  "teams": {
-  "Skaneateles": {
-   "myhr_name": "Skaneateles Lakers 16U",
-   "team_id": 26373,
-   "rating": 88.44,
-   "record": "11-7-3",
-   "gf": 67,
-   "ga": 55,
-   "ranks": [
-    "18th USA Girls 16U Tier 2",
-    "68th USA Girls 16U All"
-   ],
-   "notes": [],
-   "games": [
-    ["2026-09-19", "North American Jr Winterhawks (Blue) 16U", 4, 3, ""],
-    ["2026-09-19", "Connecticut Jr Rangers 16U", 6, 9, ""],
-    ["2026-09-20", "New Hampshire Mountain Cats 16U", 3, 2, ""],
-    ["2026-09-26", "New Jersey Colonials (Tier1) 16U", 1, 4, ""],
-    ["2026-09-26", "New Jersey Colonials (Tier1) 16U", 3, 3, ""],
-    ["2026-09-27", "New Jersey Colonials (Tier1) 16U", 1, 1, ""],
-    ["2026-10-04", "Rochester Edge 19U", 2, 1, ""],
-    ["2026-10-10", "Connecticut Jr Rangers 16U", 7, 4, ""],
-    ["2026-10-10", "Boston Advantage (Blue) 16U", 0, 4, ""],
-    ["2026-10-11", "Boston Advantage (White) 16U", 3, 2, ""],
-    ["2026-10-11", "Team Long Island 16U", 1, 4, ""],
-    ["2026-10-12", "Florida Alliance 16U", 5, 0, ""],
-    ["2026-10-24", "Rochester Jr Americans (Tier1) 16U", 3, 4, ""],
-    ["2026-10-24", "Rochester Jr Americans (Tier1) 16U", 3, 3, ""],
-    ["2026-10-31", "Rochester Jr Americans (Tier1) 16U", 7, 1, ""],
-    ["2026-10-31", "Rochester Jr Americans (Tier1) 16U", 3, 5, ""],
-    ["2026-11-06", "Philadelphia Jr Flyers (Black) 16U", 3, 2, "SO"],
-    ["2026-11-06", "Pittsburgh Steel City Selects (Minor) 16U", 3, 0, ""],
-    ["2026-11-07", "Lovell Academy Lions (Tier2) 16U", 2, 1, ""],
-    ["2026-11-07", "Toronto Leaside Wildcats (#3822) U18 BB", 6, 0, ""],
-    ["2026-11-08", "Philadelphia Jr Flyers (Black) 16U", 1, 2, ""]
-   ]
-  },
   "Team Long Island": {
    "myhr_name": "Team Long Island 16U",
    "team_id": 34160,
