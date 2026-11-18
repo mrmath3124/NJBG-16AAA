@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-17",
+ "updated": "2026-11-18",
  "source": "MYHockey Rankings team pages",
  "note": "Scouting data for upcoming opponents, keyed by the opponent name used in schedule.json. Written by scripts/update_opponents.py. games rows: [date, opponent, goals for, goals against, OT/SO note]. Add your own talking points to notes; they are kept.",
  "teams": {
   "Team Long Island": {
    "myhr_name": "Team Long Island 16U",
    "team_id": 34160,
-   "rating": 89.27,
+   "rating": 89.28,
    "record": "19-7-1",
    "gf": 81,
    "ga": 49,
@@ -48,7 +48,7 @@
   "Princeton Tiger Lilies": {
    "myhr_name": "Princeton Tiger Lilies (Tier1) 16U",
    "team_id": 9805,
-   "rating": 87.37,
+   "rating": 87.44,
    "record": "4-20-2",
    "gf": 40,
    "ga": 112,
