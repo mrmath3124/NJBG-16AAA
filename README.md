@@ -18,7 +18,7 @@ All in the `data` folder. On GitHub, open the file, click the pencil, edit, then
 | --- | --- |
 | `schedule.json` | Upcoming games: `date` (YYYY-MM-DD), `time`, `opponent`, `rink`, `town`, `arrive`, and `opp_rating` if you know it |
 | `goalies.json` | Each goalie: `name` (First L.), `number`, and a `games` list, one line per game: `date`, `opp` (the MYHockey team name), `score` (the final, us first, e.g. `"2-3"`), `sa` (shots she faced), `ga` (actual goals while she was in net), and `"full": true` if she played the whole game. The site works out the season line, the opponent-strength table and the game log from this list. A goalie without a `games` list can use season totals instead: `gp`, `sa`, `ga`, `full_games` |
-| `skaters.json` | Skater lines: `name` (First L.), `number`, `gp`, `g`, `a`, `pm` (plus-minus), and `hudl` (a link, optional) |
+| `skaters.json` | Skater lines: `name` (First L.), `number`, `gp`, `g`, `a`, and `pm` (plus-minus) |
 | `videos.json` | Hudl links: `game_date`, `opponent`, `label`, `url`, and `player` (optional) |
 | `site.json` | Announcement, rinks, disclaimer |
 | `opponent_ids.json` | MYHockey team id for each opponent name in `schedule.json` (the number in the team's MYHockey address). Fix a wrong match here |
