@@ -631,7 +631,7 @@
   function drawSkaters() {
     var tb = $('skaters').querySelector('tbody'); tb.replaceChildren();
     var ps = (D.skaters.players || []).slice();
-    if (!ps.length) { tb.appendChild(el('tr', null, [el('td', { cls: 'l muted', colspan: '7', text: 'Player stats are on the way.' })])); return; }
+    if (!ps.length) { tb.appendChild(el('tr', null, [el('td', { cls: 'l muted', colspan: '6', text: 'Player stats are on the way.' })])); return; }
     ps.forEach(function (p) { p.pts = (p.g || 0) + (p.a || 0); });
     ps.sort(function (a, b) {
       var x = a[sortKey], y = b[sortKey];
@@ -639,12 +639,10 @@
       return sortDir * ((x || 0) - (y || 0)) || String(a.name).localeCompare(String(b.name));
     });
     ps.forEach(function (p) {
-      var vid = p.hudl ? el('a', { cls: 'play', href: p.hudl, rel: 'noopener', target: '_blank', 'aria-label': 'Watch ' + p.name + ' on Hudl' }) : el('span', { cls: 'muted', text: '—' });
-      if (p.hudl) vid.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg>';
       tb.appendChild(el('tr', null, [
         el('td', { cls: 'l', text: (p.number ? '#' + p.number + ' ' : '') + p.name }), el('td', { text: String(p.gp || 0) }),
         el('td', { text: String(p.g || 0) }), el('td', { text: String(p.a || 0) }), el('td', { text: String(p.pts) }),
-        el('td', { text: p.pm == null ? '—' : p.pm > 0 ? '+' + p.pm : String(p.pm) }), el('td', null, [vid])
+        el('td', { text: p.pm == null ? '—' : p.pm > 0 ? '+' + p.pm : String(p.pm) })
       ]));
     });
   }
