@@ -644,7 +644,7 @@
       tb.appendChild(el('tr', null, [
         el('td', { cls: 'l', text: (p.number ? '#' + p.number + ' ' : '') + p.name }), el('td', { text: String(p.gp || 0) }),
         el('td', { text: String(p.g || 0) }), el('td', { text: String(p.a || 0) }), el('td', { text: String(p.pts) }),
-        el('td', { text: String(p.pim || 0) }), el('td', null, [vid])
+        el('td', { text: p.pm == null ? '—' : p.pm > 0 ? '+' + p.pm : String(p.pm) }), el('td', null, [vid])
       ]));
     });
   }
