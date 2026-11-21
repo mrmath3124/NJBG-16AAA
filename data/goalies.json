@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14",
+ "updated": "2026-11-21",
  "source_label": "Team goalie stat sheet",
  "goalies": [
   {
@@ -32,7 +32,9 @@
     {"date": "2026-11-06", "opp": "Bishop Kearney Selects 16U", "score": "0-11", "sa": 25, "ga": 6},
     {"date": "2026-11-06", "opp": "Rochester Jr Americans (Tier1) 16U", "score": "5-3", "sa": 14, "ga": 2},
     {"date": "2026-11-07", "opp": "Connecticut Jr Rangers 16U", "score": "2-3", "sa": 13, "ga": 1},
-    {"date": "2026-11-07", "opp": "St Catharines Brock Jr Badgers U18 AA", "score": "2-3", "sa": 12, "ga": 1}
+    {"date": "2026-11-07", "opp": "St Catharines Brock Jr Badgers U18 AA", "score": "2-3", "sa": 12, "ga": 1},
+    {"date": "2026-11-14", "opp": "Stateline Hawks 16U", "score": "3-0", "sa": 2, "ga": 0},
+    {"date": "2026-11-15", "opp": "Skaneateles Lakers 16U", "score": "6-2", "sa": 35, "ga": 2, "full": true}
    ]
   },
   {
@@ -63,7 +65,9 @@
     {"date": "2026-11-06", "opp": "Bishop Kearney Selects 16U", "score": "0-11", "sa": 23, "ga": 5},
     {"date": "2026-11-06", "opp": "Rochester Jr Americans (Tier1) 16U", "score": "5-3", "sa": 9, "ga": 1},
     {"date": "2026-11-07", "opp": "Connecticut Jr Rangers 16U", "score": "2-3", "sa": 16, "ga": 1},
-    {"date": "2026-11-07", "opp": "St Catharines Brock Jr Badgers U18 AA", "score": "2-3", "sa": 17, "ga": 2}
+    {"date": "2026-11-07", "opp": "St Catharines Brock Jr Badgers U18 AA", "score": "2-3", "sa": 17, "ga": 2},
+    {"date": "2026-11-14", "opp": "Stateline Hawks 16U", "score": "3-0", "sa": 5, "ga": 0},
+    {"date": "2026-11-15", "opp": "Skaneateles Lakers 16U", "score": "5-5", "sa": 25, "ga": 5, "full": true}
    ]
   }
  ]
