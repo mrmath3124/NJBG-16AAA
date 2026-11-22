@@ -21,7 +21,15 @@
   function ord(n) { var m = n % 100, k = n % 10; return n + (m > 10 && m < 14 ? 'th' : k === 1 ? 'st' : k === 2 ? 'nd' : k === 3 ? 'rd' : 'th'); }
   function day(iso) { return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }
   function longDay(iso) { return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }); }
-  function todayIso() { var d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  // A game stays "upcoming" until about two hours after it ends (start + ~1.5 hr game + 2 hr), then the next game shows.
+  function startMs(g) {
+    var m = /^(\d{1,2}):(\d{2})\s*([ap])m$/i.exec((g.time || '').trim());
+    if (!m) return new Date(g.date + 'T23:59:00').getTime();
+    var h = Number(m[1]) % 12 + (m[3].toLowerCase() === 'p' ? 12 : 0);
+    return new Date(g.date + 'T' + String(h).padStart(2, '0') + ':' + m[2] + ':00').getTime();
+  }
+  function isUpcoming(g) { return Date.now() < startMs(g) + 3.5 * 3600 * 1000; }
+  function upcomingGames() { return (D.schedule.games || []).filter(isUpcoming).sort(function (a, b) { return startMs(a) - startMs(b); }); }
   function resultText(g) { return (g.gf > g.ga ? 'W' : g.gf < g.ga ? 'L' : 'T') + ' ' + g.gf + '-' + g.ga; }
   function tile(label, value, sub, brand) {
     return el('div', { cls: 'tile' + (brand ? ' brand' : '') }, [
@@ -45,7 +53,7 @@
     D.max = D.ratings.team.max_gd || 7;
     D.all = R.gamesFor(D.ratings, { pending: true, cross: true });
     D.official = R.summarize(D.ratings.rated, D.max);
-    D.next = (D.schedule.games || []).filter(function (g) { return g.date >= todayIso(); }).sort(function (a, b) { return a.date < b.date ? -1 : 1; })[0] || null;
+    D.next = upcomingGames()[0] || null;
     if (D.next && !D.next.opp_rating && D.opps[D.next.opponent]) D.next.opp_rating = D.opps[D.next.opponent].rating;
     W.opp = D.next && D.next.opp_rating ? D.next.opp_rating : D.ratings.team.rating;
     renderFrame(); renderHome(); renderRating(); renderTrend(); renderGames(); renderStats(); renderVideo(); renderInfo();
@@ -475,7 +483,7 @@
 
   /* ---------- games ---------- */
   function renderGames() {
-    var up = (D.schedule.games || []).filter(function (g) { return g.date >= todayIso(); });
+    var up = upcomingGames();
     if (!up.length) $('games-upcoming').appendChild(el('div', null, [el('span', { cls: 'muted', text: 'Upcoming games will show here.' })]));
     up.forEach(function (g) {
       $('games-upcoming').appendChild(el('div', null, [
