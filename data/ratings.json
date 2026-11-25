@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-19",
+ "updated": "2026-11-25",
  "season": 2026,
  "team_id": 32514,
  "source": "https://myhockeyrankings.com/team_info.php?y=2026&t=32514",
  "team": {
   "name": "New Jersey Bandits 16U",
-  "rating": 88.75,
-  "record": "17-15-1",
-  "rank_tier1": 45,
-  "rank_all": 63,
+  "rating": 88.83,
+  "record": "18-16-1",
+  "rank_tier1": 44,
+  "rank_all": 60,
   "tier1_label": "USA Girls 16U Tier 1",
   "all_label": "USA Girls 16U All",
   "max_gd": 7
@@ -20,9 +20,9 @@
    "result": "W",
    "gf": 2,
    "ga": 1,
-   "opp_rating": 88.77,
-   "points": 89.77,
-   "pm": 1.02,
+   "opp_rating": 88.84,
+   "points": 89.84,
+   "pm": 1.01,
    "note": "SO"
   },
   {
@@ -31,9 +31,9 @@
    "result": "W",
    "gf": 4,
    "ga": 0,
-   "opp_rating": 86.96,
-   "points": 90.96,
-   "pm": 2.21,
+   "opp_rating": 87.05,
+   "points": 91.05,
+   "pm": 2.22,
    "note": ""
   },
   {
@@ -42,9 +42,9 @@
    "result": "W",
    "gf": 2,
    "ga": 1,
-   "opp_rating": 87.83,
-   "points": 88.83,
-   "pm": 0.08,
+   "opp_rating": 87.81,
+   "points": 88.81,
+   "pm": -0.02,
    "note": ""
   },
   {
@@ -53,9 +53,9 @@
    "result": "L",
    "gf": 2,
    "ga": 5,
-   "opp_rating": 88.97,
-   "points": 85.97,
-   "pm": -2.78,
+   "opp_rating": 89.03,
+   "points": 86.03,
+   "pm": -2.8,
    "note": ""
   },
   {
@@ -64,9 +64,9 @@
    "result": "L",
    "gf": 2,
    "ga": 3,
-   "opp_rating": 90.66,
-   "points": 89.66,
-   "pm": 0.91,
+   "opp_rating": 90.78,
+   "points": 89.78,
+   "pm": 0.95,
    "note": ""
   },
   {
@@ -75,8 +75,8 @@
    "result": "L",
    "gf": 0,
    "ga": 2,
-   "opp_rating": 91.86,
-   "points": 89.86,
+   "opp_rating": 91.94,
+   "points": 89.94,
    "pm": 1.11,
    "note": ""
   },
@@ -86,9 +86,9 @@
    "result": "L",
    "gf": 0,
    "ga": 6,
-   "opp_rating": 92.5,
-   "points": 86.5,
-   "pm": -2.25,
+   "opp_rating": 92.61,
+   "points": 86.61,
+   "pm": -2.22,
    "note": ""
   },
   {
@@ -97,9 +97,9 @@
    "result": "W",
    "gf": 5,
    "ga": 3,
-   "opp_rating": 88.76,
-   "points": 90.76,
-   "pm": 2.01,
+   "opp_rating": 88.83,
+   "points": 90.83,
+   "pm": 2.0,
    "note": ""
   },
   {
@@ -108,9 +108,9 @@
    "result": "W",
    "gf": 2,
    "ga": 1,
-   "opp_rating": 88.94,
-   "points": 89.94,
-   "pm": 1.19,
+   "opp_rating": 89.03,
+   "points": 90.03,
+   "pm": 1.2,
    "note": ""
   },
   {
@@ -119,9 +119,9 @@
    "result": "L",
    "gf": 1,
    "ga": 2,
-   "opp_rating": 87.73,
-   "points": 86.73,
-   "pm": -2.02,
+   "opp_rating": 87.77,
+   "points": 86.77,
+   "pm": -2.06,
    "note": ""
   },
   {
@@ -130,9 +130,9 @@
    "result": "W",
    "gf": 3,
    "ga": 1,
-   "opp_rating": 85.54,
-   "points": 87.54,
-   "pm": -1.21,
+   "opp_rating": 85.67,
+   "points": 87.67,
+   "pm": -1.16,
    "note": ""
   },
   {
@@ -141,9 +141,9 @@
    "result": "L",
    "gf": 3,
    "ga": 4,
-   "opp_rating": 87.44,
-   "points": 86.44,
-   "pm": -2.31,
+   "opp_rating": 87.54,
+   "points": 86.54,
+   "pm": -2.29,
    "note": ""
   },
   {
@@ -152,9 +152,9 @@
    "result": "W",
    "gf": 4,
    "ga": 3,
-   "opp_rating": 87.44,
-   "points": 88.44,
-   "pm": -0.31,
+   "opp_rating": 87.54,
+   "points": 88.54,
+   "pm": -0.29,
    "note": ""
   },
   {
@@ -163,9 +163,9 @@
    "result": "L",
    "gf": 0,
    "ga": 2,
-   "opp_rating": 90.66,
-   "points": 88.66,
-   "pm": -0.09,
+   "opp_rating": 90.78,
+   "points": 88.78,
+   "pm": -0.05,
    "note": ""
   },
   {
@@ -174,9 +174,9 @@
    "result": "W",
    "gf": 1,
    "ga": 0,
-   "opp_rating": 86.39,
-   "points": 87.39,
-   "pm": -1.36,
+   "opp_rating": 86.59,
+   "points": 87.59,
+   "pm": -1.24,
    "note": ""
   },
   {
@@ -185,8 +185,8 @@
    "result": "W",
    "gf": 5,
    "ga": 2,
-   "opp_rating": 88.01,
-   "points": 91.01,
+   "opp_rating": 88.09,
+   "points": 91.09,
    "pm": 2.26,
    "note": ""
   },
@@ -196,20 +196,9 @@
    "result": "W",
    "gf": 2,
    "ga": 0,
-   "opp_rating": 86.99,
-   "points": 88.99,
-   "pm": 0.24,
-   "note": ""
-  },
-  {
-   "date": "2026-10-11",
-   "opponent": "Boston Advantage (White) 16U",
-   "result": "W",
-   "gf": 3,
-   "ga": 1,
-   "opp_rating": 85.22,
-   "points": 87.22,
-   "pm": -1.53,
+   "opp_rating": 87.11,
+   "points": 89.11,
+   "pm": 0.28,
    "note": ""
   },
   {
@@ -218,10 +207,21 @@
    "result": "W",
    "gf": 2,
    "ga": 1,
-   "opp_rating": 87.73,
-   "points": 88.73,
-   "pm": -0.02,
+   "opp_rating": 87.77,
+   "points": 88.77,
+   "pm": -0.06,
    "note": "OT/SO"
+  },
+  {
+   "date": "2026-10-11",
+   "opponent": "Boston Advantage (White) 16U",
+   "result": "W",
+   "gf": 3,
+   "ga": 1,
+   "opp_rating": 85.33,
+   "points": 87.33,
+   "pm": -1.5,
+   "note": ""
   },
   {
    "date": "2026-10-12",
@@ -229,8 +229,8 @@
    "result": "W",
    "gf": 4,
    "ga": 3,
-   "opp_rating": 89.28,
-   "points": 90.28,
+   "opp_rating": 89.36,
+   "points": 90.36,
    "pm": 1.53,
    "note": ""
   },
@@ -240,8 +240,8 @@
    "result": "L",
    "gf": 2,
    "ga": 3,
-   "opp_rating": 89.28,
-   "points": 88.28,
+   "opp_rating": 89.36,
+   "points": 88.36,
    "pm": -0.47,
    "note": ""
   },
@@ -251,9 +251,9 @@
    "result": "W",
    "gf": 7,
    "ga": 0,
-   "opp_rating": 85.54,
-   "points": 92.54,
-   "pm": 3.79,
+   "opp_rating": 85.67,
+   "points": 92.67,
+   "pm": 3.84,
    "note": ""
   },
   {
@@ -262,8 +262,8 @@
    "result": "L",
    "gf": 3,
    "ga": 4,
-   "opp_rating": 89.14,
-   "points": 88.14,
+   "opp_rating": 89.22,
+   "points": 88.22,
    "pm": -0.61,
    "note": ""
   },
@@ -273,8 +273,8 @@
    "result": "L",
    "gf": 1,
    "ga": 2,
-   "opp_rating": 89.14,
-   "points": 88.14,
+   "opp_rating": 89.22,
+   "points": 88.22,
    "pm": -0.61,
    "note": ""
   },
@@ -284,9 +284,9 @@
    "result": "L",
    "gf": 1,
    "ga": 7,
-   "opp_rating": 93.36,
-   "points": 87.36,
-   "pm": -1.39,
+   "opp_rating": 93.53,
+   "points": 87.53,
+   "pm": -1.3,
    "note": ""
   },
   {
@@ -295,9 +295,9 @@
    "result": "L",
    "gf": 1,
    "ga": 6,
-   "opp_rating": 93.36,
-   "points": 88.36,
-   "pm": -0.39,
+   "opp_rating": 93.53,
+   "points": 88.53,
+   "pm": -0.3,
    "note": ""
   },
   {
@@ -306,9 +306,9 @@
    "result": "L",
    "gf": 0,
    "ga": 11,
-   "opp_rating": 94.73,
-   "points": 87.73,
-   "pm": -1.02,
+   "opp_rating": 95.04,
+   "points": 88.04,
+   "pm": -0.79,
    "note": ""
   },
   {
@@ -319,7 +319,7 @@
    "ga": 3,
    "opp_rating": 87.09,
    "points": 89.09,
-   "pm": 0.34,
+   "pm": 0.26,
    "note": ""
   },
   {
@@ -328,9 +328,9 @@
    "result": "L",
    "gf": 2,
    "ga": 3,
-   "opp_rating": 88.2,
-   "points": 87.2,
-   "pm": -1.55,
+   "opp_rating": 88.27,
+   "points": 87.27,
+   "pm": -1.56,
    "note": "SO"
   },
   {
@@ -339,9 +339,9 @@
    "result": "L",
    "gf": 2,
    "ga": 3,
-   "opp_rating": 89.23,
-   "points": 88.23,
-   "pm": -0.52,
+   "opp_rating": 89.25,
+   "points": 88.25,
+   "pm": -0.58,
    "note": ""
   },
   {
@@ -350,9 +350,9 @@
    "result": "W",
    "gf": 3,
    "ga": 0,
-   "opp_rating": 86.39,
-   "points": 89.39,
-   "pm": 0.64,
+   "opp_rating": 86.59,
+   "points": 89.59,
+   "pm": 0.76,
    "note": ""
   },
   {
@@ -361,9 +361,9 @@
    "result": "T",
    "gf": 5,
    "ga": 5,
-   "opp_rating": 88.3,
-   "points": 88.3,
-   "pm": -0.45,
+   "opp_rating": 88.37,
+   "points": 88.37,
+   "pm": -0.46,
    "note": ""
   },
   {
@@ -372,9 +372,31 @@
    "result": "W",
    "gf": 6,
    "ga": 2,
-   "opp_rating": 88.3,
-   "points": 92.3,
-   "pm": 3.55,
+   "opp_rating": 88.37,
+   "points": 92.37,
+   "pm": 3.54,
+   "note": ""
+  },
+  {
+   "date": "2026-11-22",
+   "opponent": "Princeton Tiger Lilies (Tier1) 16U",
+   "result": "W",
+   "gf": 3,
+   "ga": 0,
+   "opp_rating": 87.54,
+   "points": 90.54,
+   "pm": 1.71,
+   "note": ""
+  },
+  {
+   "date": "2026-11-22",
+   "opponent": "Princeton Tiger Lilies (Tier1) 16U",
+   "result": "L",
+   "gf": 1,
+   "ga": 2,
+   "opp_rating": 87.54,
+   "points": 86.54,
+   "pm": -2.29,
    "note": ""
   }
  ],
@@ -407,6 +429,13 @@
    "rank_tier1": 45,
    "rank_all": 63,
    "games": 33
+  },
+  {
+   "date": "2026-11-25",
+   "rating": 88.83,
+   "rank_tier1": 44,
+   "rank_all": 60,
+   "games": 35
   }
  ]
 }
