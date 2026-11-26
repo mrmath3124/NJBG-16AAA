@@ -1,18 +1,18 @@
 {
- "updated": "2026-11-24",
+ "updated": "2026-11-26",
  "source": "MYHockey Rankings team pages",
  "note": "Scouting data for upcoming opponents, keyed by the opponent name used in schedule.json. Written by scripts/update_opponents.py. games rows: [date, opponent, goals for, goals against, OT/SO note]. Add your own talking points to notes; they are kept.",
  "teams": {
   "Team Long Island": {
    "myhr_name": "Team Long Island 16U",
    "team_id": 34160,
-   "rating": 89.28,
-   "record": "20-7-1",
-   "gf": 86,
-   "ga": 49,
+   "rating": 89.36,
+   "record": "21-7-1",
+   "gf": 89,
+   "ga": 51,
    "ranks": [
     "10th USA Girls 16U Tier 2",
-    "50th USA Girls 16U All"
+    "49th USA Girls 16U All"
    ],
    "notes": [],
    "games": [
@@ -43,6 +43,7 @@
     ["2026-11-07", "St Catharines Brock Jr Badgers U18 AA", 4, 2, ""],
     ["2026-11-07", "Scarborough Sharks U18 AA", 2, 1, "SO"],
     ["2026-11-15", "Stateline Hawks 16U", 3, 1, ""],
+    ["2026-11-21", "New Jersey Bandits 16U", 3, 2, ""],
     ["2026-11-22", "New York City Hockey Club 16U", 5, 0, ""]
    ]
   }
